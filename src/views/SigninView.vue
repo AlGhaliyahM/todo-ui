@@ -5,7 +5,7 @@ import Taskvue from "../components/TaskCard.vue";
 <template>
   <div>
     <h1>This is an sign page</h1>
-    <Taskvue />
+    <!-- <Taskvue /> -->
   </div>
 </template>
 
