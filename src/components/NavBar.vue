@@ -12,8 +12,8 @@
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
-              to="/signin"
-              >SignIn</RouterLink
+              to="/signup"
+              >Sign up</RouterLink
             >
           </li>
           <li>
