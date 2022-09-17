@@ -12,10 +12,7 @@ export default {
   created() {
     fetch(APISettings.baseURL + '/todo/', {
       method: 'GET',
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiVGVzdGluZ0VtYWlsQGdtYWlsLmNvbSIsIm5hbWUiOiJhem96IiwiaWF0IjoxNjYzNDIwODMwLCJleHAiOjE2NjM0MjI2MzB9.mdeNgNXVha6OdvLzgRy5q-ph2ffkFB_JecgYNf3GEjs',
-      },
+      headers: APISettings.headers,
     })
       .then((res) => res.json())
       .then((data) => (this.todos = data))
