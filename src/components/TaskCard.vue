@@ -1,69 +1,65 @@
+<script lang="ts">
+//import { useRouter } from 'vue-router';
+import { APISettings } from '../api/config';
+import TaskItem from './TaskItem.vue';
+
+export default {
+  data() {
+    return {
+      todos: null,
+    };
+  },
+  created() {
+    fetch(APISettings.baseURL + '/todo/', {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiVGVzdGluZ0VtYWlsQGdtYWlsLmNvbSIsIm5hbWUiOiJhem96IiwiaWF0IjoxNjYzNDIwODMwLCJleHAiOjE2NjM0MjI2MzB9.mdeNgNXVha6OdvLzgRy5q-ph2ffkFB_JecgYNf3GEjs',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => (this.todos = data))
+      .catch((err) => console.log(err.message));
+  },
+  components: { TaskItem },
+};
+</script>
 <template>
+  <div class="card w-100 text-white bg-secondary">
+    <div class="card-body d-flex p-2" style="width: 50rem; height: 35rem">
+      <form>
+        <input
+          type="text"
+          class="form-control add-task"
+          style="width: 45rem; margin-left: 2rem; margin-top: 2rem"
+          placeholder="New Task..."
+        />
+        <div class="todoList">
+          {{ todos }}
+          <!-- is done will be set by the object from the json file we get from api e.g. task.is_done-->
+          <TaskItem Name="test task 1" :is_done="false" />
 
-  <div class="card w-100 text-white bg-secondary" >
-    <div class="card-body d-flex p-2" style="width: 50rem ; height:35rem ;">
-
-      <form >
-          <input type="text" class="form-control add-task" style="width: 45rem; margin-left:2rem; margin-top: 2rem;" placeholder="New Task...">
-          <div class="todoList">
-
-            <div class="todoItem">
-              <input class="check" type="checkbox">
-              <span style="color: black">Task1</span>
-
-              <button type="button" class="btn btn-danger" style="margin-left: 39rem; margin-top:-3rem;">Delete</button>
-            </div>
-       
-            <div class="todoItem">
-              <input class="check" type="checkbox">
-              <span style="color: black ; text-decoration: line-through">Task2</span>
-              <button type="button" class="btn btn-danger" style="margin-left: 39rem; margin-top:-3rem;">Delete</button>
-
-              </div>
-
-          </div>
-       </form>
-
- 
-
-
-    
-
-   
-      <!-- <div class="ml-auto p-2 flex-column d-flex">
-        <h5 class="card-title p-2">Card title</h5>
-      </div> -->
-
-      <!-- <div class="flex-column">
-        <p class="card-text">Created at: dd/mm/yyyy</p>
-        <p class="card-text">Created at: dd/mm/yyyy</p>
-      </div>
-
-      <div class="ml-auto p-2 flex-column d-flex">
-        <a href="#" class="btn btn-light p-2">Delete</a>
-        <a href="#" class="btn btn-light p-2">Update</a>
-      </div> -->
+          <TaskItem Name="test task 2" />
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <style scoped>
-  .todoList{
-    margin: 25px 0
-   
-  }
-  .check{
-margin-right: 1rem;
-  }
+.todoList {
+  margin: 25px 0;
+}
+.check {
+  margin-right: 1rem;
+}
 
-  .todoItem{
-    background-color:rgb(245, 246, 245) ;
-    width: 45rem;
-    height: 3.5rem;
-    padding: 15px;
-    margin: 5px 0;
-    margin-left:2rem; 
-  
-  }
-
- </style>
+.todoItem {
+  background-color: rgb(245, 246, 245);
+  width: 45rem;
+  height: 3.5rem;
+  padding: 15px;
+  margin: 5px 0;
+  margin-left: 2rem;
+}
+</style>
