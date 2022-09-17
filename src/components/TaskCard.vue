@@ -6,16 +6,25 @@ import TaskItem from './TaskItem.vue';
 export default {
   data() {
     return {
-      todos: null,
+      todos: [],
     };
   },
-  created() {
+  mounted() {
     fetch(APISettings.baseURL + '/todo/', {
       method: 'GET',
       headers: APISettings.headers,
     })
-      .then((res) => res.json())
-      .then((data) => (this.todos = data))
+      .then((response) => {
+        if (response.status != 200) {
+          throw response.status;
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        this.todos = data;
+        // console.log(this.todos);
+      })
       .catch((err) => console.log(err.message));
   },
   components: { TaskItem },
@@ -32,11 +41,15 @@ export default {
           placeholder="New Task..."
         />
         <div class="todoList">
-          {{ todos }}
-          <!-- is done will be set by the object from the json file we get from api e.g. task.is_done-->
-          <TaskItem Name="test task 1" :is_done="false" />
-
-          <TaskItem Name="test task 2" />
+          <!-- {{ todos }} -->
+          <TaskItem
+            v-for="todo in todos"
+            :key="todo.id"
+            :id="todo.id"
+            :Name="todo.task"
+            :is_done="todo.is_done"
+          />
+          <!-- <TaskItem Name="test task 2" :is_done="true" /> -->
         </div>
       </form>
     </div>

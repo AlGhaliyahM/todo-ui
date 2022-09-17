@@ -1,18 +1,22 @@
 <script setup lang="ts">
 const props = defineProps({
+  id: Number,
   Name: String,
   is_done: Boolean ?? false,
 });
+console.log(props.Name);
+
 function changeState() {
-  //   props.is_done = !props.is_done;
+  //this function should call the update funtion in the APIU
+  //props.is_done = !props.is_done;
 }
 </script>
 <template>
   <div class="todoItem">
     <input class="check" type="checkbox" v-on:change="changeState()" />
-    <span v-bind:class="{ done: props.is_done }" style="color: black">{{
-      props.Name
-    }}</span>
+    <span v-bind:class="{ done: props.is_done }" style="color: black"
+      >{{ props.Name }} : {{ props.id }}</span
+    >
     <button
       type="button"
       class="btn btn-danger"
