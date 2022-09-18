@@ -1,23 +1,27 @@
 import { defineStore } from 'pinia';
 import { APISettings } from '../api/config';
 
-export const useTodoStore = defineStore({
-  id: 'todo',
+export const useTodoStore = defineStore('todo', {
+  //id: 'todo',
   state: () => ({
-    todos: null,
+    todos: [] as any[],
+    test: 1,
   }),
-  getters: {},
+  getters: {
+    getTodos: (state) => state.todos,
+    getTest: (state) => state.test,
+  },
   actions: {
-    async getTask() {
-      this.todos = await fetch(APISettings.baseURL + '/todo/', {
+    async fetchTask() {
+      await fetch(APISettings.baseURL + '/todo/', {
         method: 'GET',
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiVGVzdGluZ0VtYWlsQGdtYWlsLmNvbSIsIm5hbWUiOiJhem96IiwiaWF0IjoxNjYzNDE3NzM5LCJleHAiOjE2NjM0MTk1Mzl9.e9UCcMIbJFpYPpUGXPGgwXIe99ff0EfKXS088NN0DYk',
-        },
+        headers: APISettings.headers,
       })
         .then((res) => res.json())
-        .then((data) => (this.todos = data))
+        .then((data) => {
+          this.todos = data;
+          console.log('this is in the store', this.todos);
+        })
         .catch((err) => console.log(err.message));
       //return this.todo;
     },

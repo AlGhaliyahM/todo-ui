@@ -1,16 +1,27 @@
 <script lang="ts">
-//import { useRouter } from 'vue-router';
-import { APISettings } from '../api/config';
 import TaskItem from './TaskItem.vue';
+import { useTodoStore } from '../stores/todo';
+import { ref } from 'vue';
+import { APISettings } from '../api/config';
 
 export default {
-  data() {
+  setup() {
+    const todoStore = useTodoStore();
+    const todos = ref(todoStore.fetchTask());
+    console.log('this is in the task card:', todos);
+
     return {
-      todos: [],
+      todos,
+      todoStore,
     };
   },
-  mounted() {
-    fetch(APISettings.baseURL + '/todo/', {
+  // async data() {
+  //   return {
+  //     todos: await
+  //   };
+  // },
+  async mounted() {
+    const todos = fetch(APISettings.baseURL + '/todo/', {
       method: 'GET',
       headers: APISettings.headers,
     })
@@ -41,6 +52,7 @@ export default {
           placeholder="New Task..."
         />
         <div class="todoList">
+          {{ todoStore.getTest }}
           <!-- {{ todos }} -->
           <TaskItem
             v-for="todo in todos"
