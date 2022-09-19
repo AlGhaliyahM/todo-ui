@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { APISettings } from '../api/config';
 
-export const useTodoStore = defineStore('todo', {
-  //id: 'todo',
+export const useTodoStore = defineStore({
+  id: 'todo',
   state: () => ({
     todos: [] as any[],
     test: 1,
