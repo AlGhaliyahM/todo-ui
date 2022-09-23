@@ -5,24 +5,24 @@ export const useTodoStore = defineStore({
   id: 'todo',
   state: () => ({
     todos: [] as any[],
-    test: 1,
+    //test: 1,
   }),
   getters: {
     getTodos: (state) => state.todos,
-    getTest: (state) => state.test,
+    //getTest: (state) => state.test,
   },
   actions: {
     async fetchTask() {
-      await fetch(APISettings.baseURL + '/todo/', {
-        method: 'GET',
-        headers: APISettings.headers,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          this.todos = data;
-          console.log('this is in the store', this.todos);
-        })
-        .catch((err) => console.log(err.message));
+      // await fetch(APISettings.baseURL + '/todo/', {
+      //   method: 'GET',
+      //   headers: APISettings.headers,
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     this.todos = data;
+      //     // console.log('this is in the store', this.todos);
+      //   })
+      //   .catch((err) => console.log(err.message));
       //return this.todo;
     },
     addTask() {

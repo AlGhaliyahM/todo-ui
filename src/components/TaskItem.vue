@@ -4,10 +4,10 @@ const props = defineProps({
   Name: String,
   is_done: Boolean ?? false,
 });
-console.log(props.Name);
+// console.log(props.Name);
 
 function changeState() {
-  //this function should call the update funtion in the APIU
+  //this function should call the update funtion in the API
   //props.is_done = !props.is_done;
 }
 </script>

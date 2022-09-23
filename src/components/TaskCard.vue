@@ -15,13 +15,8 @@ export default {
       todoStore,
     };
   },
-  // async data() {
-  //   return {
-  //     todos: await
-  //   };
-  // },
   async mounted() {
-    const todos = fetch(APISettings.baseURL + '/todo/', {
+    fetch(APISettings.baseURL + '/todo/', {
       method: 'GET',
       headers: APISettings.headers,
     })
@@ -43,7 +38,7 @@ export default {
 </script>
 <template>
   <div class="card w-100 text-white bg-secondary">
-    <div class="card-body d-flex p-2" style="width: 50rem; height: 35rem">
+    <div class="card-body d-flex p-2" style="width: 50rem">
       <form>
         <input
           type="text"
@@ -52,8 +47,6 @@ export default {
           placeholder="New Task..."
         />
         <div class="todoList">
-          {{ todoStore.getTest }}
-          <!-- {{ todos }} -->
           <TaskItem
             v-for="todo in todos"
             :key="todo.id"
