@@ -18,6 +18,7 @@ export default {
   async mounted() {
     fetch(APISettings.baseURL + '/todo/', {
       method: 'GET',
+      credentials: 'include',
       headers: APISettings.headers,
     })
       .then((response) => {
