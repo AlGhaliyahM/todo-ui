@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { APISettings } from '../api/config';
+
 const props = defineProps({
   id: Number,
   Name: String,
@@ -10,17 +12,38 @@ function changeState() {
   //this function should call the update funtion in the API
   //props.is_done = !props.is_done;
 }
+
+const deleteTask = async (ID:Number) => {
+  fetch(APISettings.baseURL + '/todo/'+ID, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: APISettings.headers,
+    })
+      .then((response) => {
+        if (response.status != 200) {
+          throw response.status;
+        } else {
+          return response.json();
+        }
+      })
+      .then(() => {
+        console.log("task deleted"+ ID)
+        // console.log(this.todos);
+      })
+      .catch((err) => console.log(err.message));
+}
 </script>
 <template>
   <div class="todoItem">
     <input class="check" type="checkbox" v-on:change="changeState()" />
     <span v-bind:class="{ done: props.is_done }" style="color: black"
-      >{{ props.Name }} : {{ props.id }}</span
+      >{{ props.Name }}</span
     >
     <button
-      type="button"
+      type="submit"
       class="btn btn-danger"
       style="margin-left: 39rem; margin-top: -3rem"
+      v-on:click= deleteTask(props.id)
     >
       Delete
     </button>
