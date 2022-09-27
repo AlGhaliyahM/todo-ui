@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 import { APISettings } from '../api/config';
 
@@ -33,16 +34,18 @@ const deleteTask = async (ID:Number) => {
       .catch((err) => console.log(err.message));
 }
 </script>
+
 <template>
   <div class="todoItem">
     <input class="check" type="checkbox" v-on:change="changeState()" />
-    <span v-bind:class="{ done: props.is_done }" style="color: black"
-      >{{ props.Name }}</span
-    >
+    <span v-bind:class="{ done: props.is_done }" style="color: black">
+      {{ props.Name }}
+    </span>
+
     <button
       type="submit"
       class="btn btn-danger"
-      style="margin-left: 39rem; margin-top: -3rem"
+      style="margin-left: 38rem; margin-top: -3rem"
       v-on:click= deleteTask(props.id)
     >
       Delete
