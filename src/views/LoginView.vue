@@ -1,5 +1,5 @@
 <script lang="ts">
-import { APISettings } from '@/api/config';
+import { APISettings } from '../api/config';
 import { reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
