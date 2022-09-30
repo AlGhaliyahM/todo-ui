@@ -4,7 +4,9 @@ import { useTodoStore } from '../stores/todo';
 import { ref } from 'vue';
 import { APISettings } from '../api/config';
 
+//initiate the store
 const todoStore = useTodoStore();
+//store action
 todoStore.fetchTask();
 </script>
 <template>
@@ -35,6 +37,7 @@ todoStore.fetchTask();
           </div>
 
           <div class="todoList">
+            <!-- to access the store use todoStore.$state.todos  -->
             <TaskItem
               v-for="todo in todoStore.$state.todos"
               :key="todo.id"
