@@ -13,21 +13,22 @@ export const useTodoStore = defineStore({
   },
   actions: {
     async fetchTask() {
-      // await fetch(APISettings.baseURL + '/todo/', {
-      //   method: 'GET',
-      //   headers: APISettings.headers,
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     this.todos = data;
-      //     // console.log('this is in the store', this.todos);
-      //   })
-      //   .catch((err) => console.log(err.message));
-      //return this.todo;
+      await fetch(APISettings.baseURL + '/todo/', {
+        credentials: 'include',
+        method: 'GET',
+        headers: APISettings.headers,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.todos = data;
+          //console.log('this is in the store', this.todos);
+        })
+        .catch((err) => console.log(err.message));
+      // return this.todo;
     },
-    addTask() {
-      //this.counter--;
-    },
+    // addTask() {
+    //   this.counter--;
+    // },
     //getID() {},
     //updateTask() {},
     //countTasks() {},

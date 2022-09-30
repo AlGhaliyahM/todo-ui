@@ -1,41 +1,11 @@
-<script lang="ts">
+<script lang="ts" setup>
 import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
 import { ref } from 'vue';
 import { APISettings } from '../api/config';
 
-export default {
-  setup() {
-    const todoStore = useTodoStore();
-    const todos = ref(todoStore.fetchTask());
-    console.log('this is in the task card:', todos);
-
-    return {
-      todos,
-      todoStore,
-    };
-  },
-  async mounted() {
-    fetch(APISettings.baseURL + '/todo/', {
-      method: 'GET',
-      credentials: 'include',
-      headers: APISettings.headers,
-    })
-      .then((response) => {
-        if (response.status != 200) {
-          throw response.status;
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        this.todos = data;
-        // console.log(this.todos);
-      })
-      .catch((err) => console.log(err.message));
-  },
-  components: { TaskItem },
-};
+const todoStore = useTodoStore();
+todoStore.fetchTask();
 </script>
 <template>
   <div class="card w-100 text-white bg-secondary">
@@ -49,7 +19,7 @@ export default {
         />
         <div class="todoList">
           <TaskItem
-            v-for="todo in todos"
+            v-for="todo in todoStore.$state.todos"
             :key="todo.id"
             :id="todo.id"
             :Name="todo.task"
