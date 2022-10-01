@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { APISettings } from '../api/config';
+import { useTodoStore } from '../stores/todo';
+
+//initiate the store
+const todoStore = useTodoStore();
 
 const props = defineProps({
   id: Number,
@@ -13,25 +17,6 @@ function changeState() {
   //props.is_done = !props.is_done;
 }
 
-const deleteTask = async (ID: Number) => {
-  fetch(APISettings.baseURL + '/todo/' + ID, {
-    method: 'DELETE',
-    credentials: 'include',
-    headers: APISettings.headers,
-  })
-    .then((response) => {
-      if (response.status != 200) {
-        throw response.status;
-      } else {
-        return response.json();
-      }
-    })
-    .then(() => {
-      console.log('task deleted' + ID);
-      // console.log(this.todos);
-    })
-    .catch((err) => console.log(err.message));
-};
 </script>
 
 <template>
@@ -45,7 +30,7 @@ const deleteTask = async (ID: Number) => {
       type="submit"
       class="btn btn-danger"
       style="margin-left: 38rem; margin-top: -3rem"
-      v-on:click="deleteTask(props.id)"
+      v-on:click="todoStore.deleteTask(props.id)"
     >
       Delete
     </button>

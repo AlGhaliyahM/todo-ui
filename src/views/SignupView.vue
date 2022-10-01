@@ -1,6 +1,6 @@
 <script lang="ts">
 import { reactive } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { APISettings } from '../api/config';
 
 export default {

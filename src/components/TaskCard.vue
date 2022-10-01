@@ -1,13 +1,20 @@
 <script lang="ts" setup>
 import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 import { APISettings } from '../api/config';
+
 
 //initiate the store
 const todoStore = useTodoStore();
 //store action
 todoStore.fetchTask();
+
+// const props = defineProps({
+//   newTask: String,
+// });
+const task = ref('')
+
 </script>
 <template>
   <div class="card w-100 text-white bg-secondary">
@@ -17,6 +24,7 @@ todoStore.fetchTask();
           <div>
             <input
               type="text"
+              v-model="task"
               class="form-control add-task"
               style="
                 width: 45rem;
@@ -24,18 +32,18 @@ todoStore.fetchTask();
                 margin-left: 2rem;
                 margin-top: 2rem;
               "
-              placeholder="New Task..."
-            />
-            <!-- {{data.task}} -->
+              placeholder="New Task..."                      
+            />  
+            
             <button
-              v-on:click="postTask()"
               class="btn btn-dark"
               style="margin-left: 40.5rem; margin-top: -5rem"
+              v-on:click="todoStore.postTask(task)"
             >
               Add Task
             </button>
           </div>
-
+          
           <div class="todoList">
             <!-- to access the store use todoStore.$state.todos  -->
             <TaskItem
@@ -50,6 +58,7 @@ todoStore.fetchTask();
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>
