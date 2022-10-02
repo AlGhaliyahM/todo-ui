@@ -50,27 +50,6 @@ export const useTodoStore = defineStore({
     //getID() {},
     //updateTask() {},
     //countTasks() {},
-    
-    async deleteTask(ID: Number){
-
-      await  fetch(APISettings.baseURL + '/todo/' + ID, {
-            method: 'DELETE',
-            credentials: 'include',
-            headers: APISettings.headers,
-          })
-            .then((response) => {
-              if (response.status != 200) {
-                throw response.status;
-              } else {
-                return response.json();
-              }
-            })
-            .then(() => {
-              console.log('task deleted' + ID);
-            })
-            .catch((err) => console.log(err.message));
-        },
-
         async postTask(newTask:string){
     
           console.log(newTask)

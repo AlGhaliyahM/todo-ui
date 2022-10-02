@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
-
+import { ref } from 'vue';
 
 //initiate the store
 const todoStore = useTodoStore();
@@ -42,7 +42,7 @@ const task = ref('')
             </button>
           </div>
         </form>
-        
+
           <div class="todoList">
             <!-- to access the store use todoStore.$state.todos  -->
             <TaskItem
