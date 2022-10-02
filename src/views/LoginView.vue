@@ -15,11 +15,11 @@ export default {
 
     const submit = async () => {
       //Send data to back end
-
-      await fetch(APISettings.baseURL + '/user/login', {
+      
+      await fetch(APISettings.baseURL + '/user/login', {        
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', //to get the cookie
+        credentials: 'include', // to get the cookie
         body: JSON.stringify(data),
       });
 

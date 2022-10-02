@@ -20,7 +20,7 @@ const task = ref('')
   <div class="card w-100 text-white bg-secondary">
     <div class="card-body d-flex p-2" style="width: 50rem">
       <div>
-        <form>
+        <form @submit.prevent="todoStore.postTask(task)">
           <div>
             <input
               type="text"
@@ -36,14 +36,15 @@ const task = ref('')
             />  
             
             <button
+            type="submit"
               class="btn btn-dark"
               style="margin-left: 40.5rem; margin-top: -5rem"
-              v-on:click="todoStore.postTask(task)"
             >
               Add Task
             </button>
           </div>
-          
+        </form>
+        
           <div class="todoList">
             <!-- to access the store use todoStore.$state.todos  -->
             <TaskItem
@@ -54,7 +55,7 @@ const task = ref('')
               :is_done="todo.is_done"
             />
           </div>
-        </form>
+        
       </div>
     </div>
   </div>

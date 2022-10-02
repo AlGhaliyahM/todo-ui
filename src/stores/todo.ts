@@ -52,26 +52,30 @@ export const useTodoStore = defineStore({
             .catch((err) => console.log(err.message));
         },
 
-        async postTask(newTask:String){
+        async postTask(newTask:string){
     
           console.log(newTask)
           console.log("Inside POST")
+          interface task  {
+            task: string
+          }
 
+          const task:task = {task: newTask}
+          console.log('====================================');
+          console.log(task);
+          console.log(JSON.stringify(task));
+          console.log('====================================');
           await fetch(APISettings.baseURL + '/todo', {
             method: 'POST',
             headers: APISettings.headers,
             credentials: 'include', //to get the cookie
-            body: JSON.stringify(newTask),
+            body: JSON.stringify(task).toString(),
           })
-            .then((res) => res.json())
-            .then(() => {
-              
-              alert("The task Added :  " + newTask)
+            .then((res) => { 
+              console.log("The task Added :  " + res);
               //console.log('this is in the store', this.todos);
             })
             .catch((err) => console.log(err.message));
-
-
         }
     }   
   },

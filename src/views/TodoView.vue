@@ -1,16 +1,14 @@
 <script setup lang="ts">
-  import Taskvue from "../components/TaskCard.vue";
-  </script>
+import TaskCard from "../components/TaskCard.vue";
+    </script>
 <template>
   <div>
     <h1 class="title">Todo List</h1>
-    <Taskvue />
-    
+    <TaskCard />
   </div>
 </template>
-<script setup lang="ts"></script>
-<style scoped>
 
+<style scoped>
 .title {
 text-align: center;
 color: rgb(255, 255, 255);
