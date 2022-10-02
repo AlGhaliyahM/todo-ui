@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
-import { ref } from 'vue';
-import { APISettings } from '../api/config';
 
 //initiate the store
 const todoStore = useTodoStore();
