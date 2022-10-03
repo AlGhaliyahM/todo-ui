@@ -40,6 +40,7 @@ export const useTodoStore = defineStore({
         })
         .then(() => {
           console.log('task deleted' + ID);
+           this.fetchTask()
           // console.log(this.todos);
         })
         .catch((err) => console.log(err.message));

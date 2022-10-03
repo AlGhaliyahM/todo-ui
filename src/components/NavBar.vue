@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { useAuthStore } from '../stores/auth';
+const authStore = useAuthStore();
+</script>
+
 <template>
   <nav class="navbar navbar-expand navbar-dark">
     <div class="container-md">
@@ -22,6 +27,17 @@
               class="nav-link"
               to="/Login"
               >Login</RouterLink
+            >
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li>
+            <RouterLink
+              style="color: whitesmoke; font-weight: 600"
+              class="nav-link"
+              to="/Login"
+              >Logout</RouterLink
             >
           </li>
         </ul>
