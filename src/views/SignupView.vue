@@ -19,10 +19,11 @@ export default {
       await fetch(APISettings.baseURL + '/user/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // to get the cookie
         body: JSON.stringify(data),
       });
 
-      await router.push('/login');
+      await router.push('/');
       //console.log(data);
     };
     return {

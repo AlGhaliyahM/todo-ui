@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { APISettings } from '../api/config';
 
+TODO:"Check all the responses to be consistent and add alert message for : post, delete,update"
+
 export const useTodoStore = defineStore({
   id: 'todo',
   state: () => ({
@@ -10,7 +12,8 @@ export const useTodoStore = defineStore({
     getTodos: (state) => state.todos,
     //getTest: (state) => state.test,
   },
-  actions: {
+  
+  actions: { 
     async fetchTask() {
       await fetch(APISettings.baseURL + '/todo/', {
         credentials: 'include',
@@ -72,9 +75,8 @@ export const useTodoStore = defineStore({
           })
             .then((res) => { 
               console.log("The task Added :  " + res);
-              //console.log('this is in the store', this.todos);
             })
-            .catch((err) => console.log(err.message));
+            .catch((err) =>console.log(err.message));
         }
     }   
   },
