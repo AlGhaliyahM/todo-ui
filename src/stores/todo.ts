@@ -1,19 +1,23 @@
 import { defineStore } from 'pinia';
 import { APISettings } from '../api/config';
 
-TODO:"Check all the responses to be consistent and add alert message for : post, delete,update"
+//TODO: 'Check all the responses to be consistent and add alert message for : post, delete,update';
 
 export const useTodoStore = defineStore({
   id: 'todo',
   state: () => ({
     todos: [] as any[],
+    completedTodos: 0,
+    pendingTodos: 0,
   }),
+
   getters: {
     getTodos: (state) => state.todos,
-    //getTest: (state) => state.test,
+    getCompletedTodos: (state) => state.completedTodos,
+    getPendingTodos: (state) => state.pendingTodos,
   },
-  
-  actions: { 
+
+  actions: {
     async fetchTask() {
       await fetch(APISettings.baseURL + '/todo/', {
         credentials: 'include',
@@ -43,41 +47,46 @@ export const useTodoStore = defineStore({
         })
         .then(() => {
           console.log('task deleted' + ID);
-           this.fetchTask()
+          this.fetchTask();
           // console.log(this.todos);
         })
         .catch((err) => console.log(err.message));
     },
-    // addTask() {
-    //   this.counter--;
-    // },
     //getID() {},
     //updateTask() {},
-    //countTasks() {},
-        async postTask(newTask:string){
-    
-          console.log(newTask)
-          console.log("Inside POST")
-          interface task  {
-            task: string
-          }
+    async countTasks() {
+      await fetch(APISettings.baseURL + '/todo/countTask', {
+        credentials: 'include',
+        method: 'GET',
+        headers: APISettings.headers,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    },
+    async postTask(newTask: string) {
+      console.log(newTask);
+      console.log('Inside POST');
+      interface task {
+        task: string;
+      }
 
-          const task:task = {task: newTask}
-          console.log('====================================');
-          console.log(task);
-          console.log(JSON.stringify(task));
-          console.log('====================================');
-          await fetch(APISettings.baseURL + '/todo', {
-            method: 'POST',
-            headers: APISettings.headers,
-            credentials: 'include', //to get the cookie
-            body: JSON.stringify(task).toString(),
-          })
-            .then((res) => { 
-              console.log("The task Added :  " + res);
-            })
-            .catch((err) =>console.log(err.message));
-        }
-    }   
+      const task: task = { task: newTask };
+      console.log('====================================');
+      console.log(task);
+      console.log(JSON.stringify(task));
+      console.log('====================================');
+      await fetch(APISettings.baseURL + '/todo', {
+        method: 'POST',
+        headers: APISettings.headers,
+        credentials: 'include', //to get the cookie
+        body: JSON.stringify(task).toString(),
+      })
+        .then((res) => {
+          console.log('The task Added :  ' + res);
+        })
+        .catch((err) => console.log(err.message));
+    },
   },
-);
+});

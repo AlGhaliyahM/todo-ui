@@ -7,6 +7,7 @@ import { ref } from 'vue';
 const todoStore = useTodoStore();
 //store action
 todoStore.fetchTask();
+todoStore.countTasks();
 
 const task = ref('');
 </script>
@@ -44,7 +45,7 @@ const task = ref('');
           style="flex-direction: column; margin-top: 30px; margin-left: 20px"
         >
           <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box1">#</div>
+            <div class="box1">{{ todoStore.$state.completedTodos }}</div>
             <h6 class="statusText">Completed Todo</h6>
           </div>
 

@@ -1,14 +1,11 @@
 <script lang="ts" setup>
 import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
-import { ref } from 'vue';
 
 //initiate the store
 const todoStore = useTodoStore();
 //store action
-todoStore.fetchTask();
-
-const task = ref('');
+// todoStore.fetchTask();
 </script>
 <template>
   <div class="todoList">
@@ -18,7 +15,7 @@ const task = ref('');
       style="text-align: center; margin-top: 200px"
       v-if="todoStore.$state.todos.length == 0"
     >
-      Nothing todo
+      NO TODOS
     </h2>
     <TaskItem
       v-for="todo in todoStore.$state.todos"
