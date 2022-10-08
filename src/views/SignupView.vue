@@ -16,7 +16,7 @@ export default {
     const submit = async () => {
       //Send data to back end
 
-      await fetch(APISettings.baseURL + '/user/signup', {
+      await fetch(APISettings.baseURL + '/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // to get the cookie

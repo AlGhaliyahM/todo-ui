@@ -16,7 +16,6 @@ function changeState() {
   //this function should call the update funtion in the API
   //props.is_done = !props.is_done;
 }
-
 </script>
 
 <template>
@@ -28,8 +27,8 @@ function changeState() {
 
     <button
       type="submit"
-      class="btn btn-danger"
-      style="margin-left: 38rem; margin-top: -3rem"
+      class="btn btn-dark"
+      style="margin-left: 34rem; margin-top: -3rem"
       v-on:click="todoStore.deleteTask(props.id)"
     >
       Delete
@@ -43,11 +42,11 @@ function changeState() {
 }
 
 .todoItem {
-  background-color: rgb(245, 246, 245);
-  width: 45rem;
+  background-color: #e8f1f4;
+  width: 40rem;
   height: 3.5rem;
   padding: 15px;
-  margin: 5px 0;
+  margin: 8px 0;
   margin-left: 2rem;
 }
 .done {
