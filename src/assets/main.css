@@ -10,6 +10,68 @@
   background: linear-gradient(0deg, #ffffff 0%, #b8b8ba 100%); */
 }
 
+/* Custom style */
+
+.textBox {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+.blackContainer {
+  height: 550px;
+  width: 500px;
+  background-color: #050505;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputField {
+  border-radius: 10px;
+  background-color: #2d2e36;
+  width: 350px;
+  height: 50px;
+  border-width: 0ch;
+  color: #ffffff;
+  margin: 10px;
+  padding-left: 15px;
+}
+
+::placeholder {
+  color: #ffffff;
+  padding-left: 15px;
+  font-weight: 300;
+}
+
+.submitBtn {
+  border-radius: 10px;
+  border-width: 0ch;
+  background-color: #c6bbf8;
+  width: 350px;
+  height: 50px;
+  margin: 10px;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.loginQues{
+  margin-left: 20px;
+  color: #ffffff;
+  font-weight: 300;
+}
+
 /* a,
 .green {
   text-decoration: none;

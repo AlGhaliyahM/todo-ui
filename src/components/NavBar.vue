@@ -13,22 +13,27 @@ const authStore = useAuthStore();
       >
       <div class="navbar" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li>
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
               to="/signup"
-              >Sign up</RouterLink
-            >
+              >Register
+            </RouterLink>
           </li>
-          <li>
+
+          <!-- <li>
+            <button class="registerBorder">Register</button>
+          </li> -->
+
+          <!-- <li>
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
               to="/Login"
               >Login</RouterLink
             >
-          </li>
+          </li> -->
         </ul>
 
         <ul class="navbar-nav">
@@ -44,5 +49,17 @@ const authStore = useAuthStore();
       </div>
     </div>
   </nav>
-  <hr />
+  <!-- <hr /> -->
 </template>
+
+<style>
+.registerBorder {
+  border-radius: 15px;
+  border-color: #c6bbf8;
+  background-color: #212328;
+  /* border-width: 2px; */
+  width: 135px;
+  height: 50px;
+  color: #ffffff;
+}
+</style>

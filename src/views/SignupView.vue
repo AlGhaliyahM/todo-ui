@@ -35,42 +35,50 @@ export default {
 </script>
 
 <template>
-  <main class="form-signin w-100 m-auto">
+  <div class="blackContainer">
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal" style="color: white">Please Sign up</h1>
+      <h1 class="textBox">Register new Account</h1>
 
-      <input
-        v-model="data.name"
-        class="form-control"
-        placeholder="Name"
-        required
-      />
+      <div class="inputContainer">
+        <input
+          v-model="data.name"
+          class="inputField"
+          placeholder="Name"
+          required
+        />
 
-      <input
-        v-model="data.email"
-        type="email"
-        class="form-control"
-        placeholder="Email"
-        required
-      />
+        <input
+          v-model="data.email"
+          type="email"
+          class="inputField"
+          placeholder="Email"
+          required
+        />
 
-      <input
-        v-model="data.password"
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        required
-      />
+        <input
+          v-model="data.password"
+          type="password"
+          class="inputField"
+          placeholder="Password"
+          required
+        />
 
-      <button
-        class="w-100 btn btn-lg btn-primary"
-        style="background-color: black; border-color: black"
-        type="submit"
-      >
-        Sign up
-      </button>
+        <button class="submitBtn" type="submit">Register Account</button>
+      </div>
+
+      <div style="display: flex; flex-direction: row">
+        <h6 style="margin-left: 20px; color: #ffffff; font-weight: 300">
+          Already have an account?
+          <RouterLink
+            style="color: #95d3f8; font-weight: 500; text-decoration: none"
+            to="/Login"
+          >
+            Login</RouterLink
+          >
+        </h6>
+      </div>
     </form>
-  </main>
+  </div>
 </template>
 
 <style>

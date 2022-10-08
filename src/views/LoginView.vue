@@ -15,8 +15,8 @@ export default {
 
     const submit = async () => {
       //Send data to back end
-      
-      await fetch(APISettings.baseURL + '/user/login', {        
+
+      await fetch(APISettings.baseURL + '/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // to get the cookie
@@ -35,43 +35,34 @@ export default {
 </script>
 
 <template>
-  <main class="form-signin w-100 m-auto">
+  <div class="blackContainer">
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal" style="color: white">Please Login</h1>
+      <h1 class="textBox">Log in to Your Account</h1>
 
-      <input
-        v-model="data.email"
-        type="email"
-        class="form-control"
-        placeholder="Email"
-        required
-      />
+      <div class="inputContainer">
+        <input
+          v-model="data.email"
+          type="email"
+          class="inputField"
+          placeholder="Email"
+          required
+        />
 
-      <input
-        v-model="data.password"
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        required
-      />
+        <input
+          v-model="data.password"
+          type="password"
+          class="inputField"
+          placeholder="Password"
+          required
+        />
 
-      <button
-        class="w-100 btn btn-lg btn-primary"
-        style="background-color: black; border-color: black"
-        type="submit"
-      >
-        Login
-      </button>
+        <button class="submitBtn" type="submit">Login to Your Account</button>
+      </div>
     </form>
-  </main>
+  </div>
 </template>
 
 <style>
-/* html,
-body {
-  height: 100%;
-} */
-
 body {
   /* display: flex; */
   align-items: center;
@@ -79,7 +70,7 @@ body {
   padding-bottom: 40px;
   /* background-color: #f5f5f5; */
 }
-
+/* 
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -100,5 +91,5 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
+} */
 </style>
