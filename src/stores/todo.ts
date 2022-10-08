@@ -62,8 +62,13 @@ export const useTodoStore = defineStore({
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-        });
+          const { completedTasks, pendingTasks } = data;
+          console.log(completedTasks, pendingTasks);
+          this.completedTodos = completedTasks;
+          this.pendingTodos = pendingTasks;
+          // console.log(data);
+        })
+        .catch((err) => console.log(err.message));
     },
     async postTask(newTask: string) {
       console.log(newTask);

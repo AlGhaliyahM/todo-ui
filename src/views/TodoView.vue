@@ -50,7 +50,7 @@ const task = ref('');
           </div>
 
           <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box2">#</div>
+            <div class="box2">{{ todoStore.$state.pendingTodos }}</div>
             <h6 class="statusText">Pending Todo</h6>
           </div>
         </div>
