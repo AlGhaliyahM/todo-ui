@@ -63,7 +63,6 @@ export const useTodoStore = defineStore({
         .then((res) => res.json())
         .then((data) => {
           const { completedTasks, pendingTasks } = data;
-          console.log(completedTasks, pendingTasks);
           this.completedTodos = completedTasks;
           this.pendingTodos = pendingTasks;
           // console.log(data);

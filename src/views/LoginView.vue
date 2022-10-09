@@ -1,36 +1,27 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { APISettings } from '../api/config';
-import { reactive } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-export default {
-  // `setup` is a special hook dedicated for composition API.
-  setup() {
-    const data = reactive({
-      email: '',
-      password: '',
-    });
+const data = ref({
+  email: '',
+  password: '',
+});
 
-    const router = useRouter();
+const router = useRouter();
 
-    const submit = async () => {
-      //Send data to back end
-
-      await fetch(APISettings.baseURL + '/user/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // to get the cookie
-        body: JSON.stringify(data),
-      });
-
-      await router.push('/');
-      //console.log(data);
-    };
-    return {
-      data,
-      submit,
-    };
-  },
+const submit = async () => {
+  //Send data to back end
+  let status = 401;
+  await fetch(APISettings.baseURL + '/user/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include', // to get the cookie
+    body: JSON.stringify(data.value),
+  })
+    .then((response) => (status = response.status))
+    .catch((err) => console.log(err.message));
+  if (status === 201) await router.push('/');
 };
 </script>
 
@@ -64,11 +55,9 @@ export default {
 
 <style>
 body {
-  /* display: flex; */
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  /* background-color: #f5f5f5; */
 }
 /* 
 .form-signin {

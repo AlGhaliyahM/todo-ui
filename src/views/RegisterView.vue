@@ -1,37 +1,58 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { APISettings } from '../api/config';
 
-export default {
-  // `setup` is a special hook dedicated for composition API.
-  setup() {
-    const data = reactive({
-      name: '',
-      email: '',
-      password: '',
-    });
+const data = reactive({
+  name: '',
+  email: '',
+  password: '',
+});
 
-    const router = useRouter();
-    const submit = async () => {
-      //Send data to back end
+const router = useRouter();
+const submit = async () => {
+  //Send data to back end
+  let status = 401;
+  await fetch(APISettings.baseURL + '/user/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include', // to get the cookie
+    body: JSON.stringify(data),
+  })
+    .then((respones) => (status = respones.status))
+    .catch((err) => console.log(err.message));
 
-      await fetch(APISettings.baseURL + '/user/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // to get the cookie
-        body: JSON.stringify(data),
-      });
-
-      await router.push('/');
-      //console.log(data);
-    };
-    return {
-      data,
-      submit,
-    };
-  },
+  if (status === 201) await router.push('/');
 };
+// export default {
+//   // `setup` is a special hook dedicated for composition API.
+//   setup() {
+//     const data = reactive({
+//       name: '',
+//       email: '',
+//       password: '',
+//     });
+
+//     const router = useRouter();
+//     const submit = async () => {
+//       //Send data to back end
+
+//       await fetch(APISettings.baseURL + '/user/register', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         credentials: 'include', // to get the cookie
+//         body: JSON.stringify(data),
+//       });
+
+//       await router.push('/');
+//       //console.log(data);
+//     };
+//     return {
+//       data,
+//       submit,
+//     };
+//   },
+// };
 </script>
 
 <template>
