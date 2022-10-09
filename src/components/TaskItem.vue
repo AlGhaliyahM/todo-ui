@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTodoStore } from '../stores/todo';
-
+import { ref } from 'vue';
 //initiate the store
 const todoStore = useTodoStore();
 
@@ -18,19 +18,46 @@ function changeState() {
 
 <template>
   <div class="todoItem">
-    <input class="check" type="checkbox" v-on:change="changeState()" />
-    <span v-bind:class="{ done: props.is_done }" style="color: black">
+    <div v-if="props.is_done == false">
+      <input class="check" type="checkbox" v-on:change="changeState()" />
+      <!-- <span v-bind:class="{ done: props.is_done }" style="color: black">
       {{ props.Name }}
-    </span>
+    </span> -->
+      <label style="color: black">
+        {{ props.Name }}
+      </label>
+      <button
+        type="submit"
+        class="btn btn-dark"
+        style="margin-left: 34rem; margin-top: -4rem"
+        v-on:click="todoStore.deleteTask(props.id)"
+      >
+        Delete
+      </button>
+    </div>
 
-    <button
-      type="submit"
-      class="btn btn-dark"
-      style="margin-left: 34rem; margin-top: -4rem"
-      v-on:click="todoStore.deleteTask(props.id)"
-    >
-      Delete
-    </button>
+    <div v-if="props.is_done == true">
+      <input
+        class="check"
+        type="checkbox"
+        v-on:change="todoStore.updateTask(props.id, !props.is_done)"
+        checked
+      />
+      <!-- <span v-bind:class="{ done: props.is_done }" style="color: black">
+      {{ props.Name }}
+    </span> -->
+      <label style="color: black">
+        {{ props.Name }}
+      </label>
+      <button
+        type="submit"
+        class="btn btn-dark"
+        style="margin-left: 34rem; margin-top: -4rem"
+        v-on:click="todoStore.deleteTask(props.id)"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </template>
 
@@ -52,7 +79,12 @@ function changeState() {
     Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-.done {
+.done label {
+  text-decoration: line-through;
+}
+
+input[type='checkbox']:checked + label {
+  color: black;
   text-decoration: line-through;
 }
 </style>

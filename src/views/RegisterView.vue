@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { APISettings } from '../api/config';
 
-const data = reactive({
+const data = ref({
   name: '',
   email: '',
   password: '',
@@ -17,7 +17,7 @@ const submit = async () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
-    body: JSON.stringify(data),
+    body: JSON.stringify(data.value),
   })
     .then((respones) => (status = respones.status))
     .catch((err) => console.log(err.message));

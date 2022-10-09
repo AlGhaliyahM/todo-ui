@@ -2,6 +2,7 @@
 import { APISettings } from '../api/config';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import VueBasicAlert from 'vue-basic-alert';
 
 const data = ref({
   email: '',
