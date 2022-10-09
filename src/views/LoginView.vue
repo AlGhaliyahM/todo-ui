@@ -1,7 +1,7 @@
 <script lang="ts">
 import { APISettings } from '../api/config';
 import { reactive } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 export default {
   // `setup` is a special hook dedicated for composition API.

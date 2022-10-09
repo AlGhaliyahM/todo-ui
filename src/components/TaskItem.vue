@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { APISettings } from '../api/config';
 import { useTodoStore } from '../stores/todo';
 
 //initiate the store
@@ -28,7 +27,7 @@ function changeState() {
     <button
       type="submit"
       class="btn btn-dark"
-      style="margin-left: 34rem; margin-top: -3rem"
+      style="margin-left: 34rem; margin-top: -4rem"
       v-on:click="todoStore.deleteTask(props.id)"
     >
       Delete
@@ -48,6 +47,11 @@ function changeState() {
   padding: 15px;
   margin: 8px 0;
   margin-left: 2rem;
+  border-radius: 10px;
+  font-size: larger;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 .done {
   text-decoration: line-through;

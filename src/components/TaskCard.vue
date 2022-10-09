@@ -4,8 +4,6 @@ import { useTodoStore } from '../stores/todo';
 
 //initiate the store
 const todoStore = useTodoStore();
-//store action
-// todoStore.fetchTask();
 </script>
 <template>
   <div class="todoList">
