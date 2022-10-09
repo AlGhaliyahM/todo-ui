@@ -4,11 +4,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import App from "./App.vue";
 import router from "./router";
-
+import VueBasicAlert from 'vue-basic-alert'
 import "./assets/main.css";
 
 const app = createApp(App);
 
+app.use(VueBasicAlert);
 app.use(createPinia());
 app.use(router);
 

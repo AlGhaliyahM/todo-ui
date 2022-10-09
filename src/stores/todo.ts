@@ -53,7 +53,23 @@ export const useTodoStore = defineStore({
         .catch((err) => console.log(err.message));
     },
     //getID() {},
-    //updateTask() {},
+   async updateTask(ID: number, status:boolean) {
+
+    console.log("In Update todo");
+
+    console.log(status);
+    const s = { is_done: status };
+    console.log(s);
+      await fetch(APISettings.baseURL + '/todo/'+ID, {
+
+        method: 'PUT',
+        headers: APISettings.headers,
+        credentials: 'include',
+       body: JSON.stringify(s),
+      }).then((res) => res.json())
+      .catch((err) => console.log(err.message));
+    },
+
     async countTasks() {
       await fetch(APISettings.baseURL + '/todo/countTask', {
         credentials: 'include',
@@ -92,5 +108,7 @@ export const useTodoStore = defineStore({
         })
         .catch((err) => console.log(err.message));
     },
+
+    
   },
 });
