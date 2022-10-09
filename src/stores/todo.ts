@@ -19,7 +19,7 @@ export const useTodoStore = defineStore({
 
   actions: {
     async fetchTask() {
-      await fetch(APISettings.baseURL + '/todo/', {
+      await fetch(APISettings.baseURL + 'todo/', {
         credentials: 'include',
         method: 'GET',
         headers: APISettings.headers,
@@ -33,7 +33,7 @@ export const useTodoStore = defineStore({
       // return this.todo;
     },
     async deleteTask(ID: number) {
-      fetch(APISettings.baseURL + '/todo/' + ID, {
+      await fetch(APISettings.baseURL + 'todo/' + ID, {
         method: 'DELETE',
         credentials: 'include',
         headers: APISettings.headers,
@@ -53,9 +53,23 @@ export const useTodoStore = defineStore({
         .catch((err) => console.log(err.message));
     },
     //getID() {},
-    //updateTask() {},
+    async updateTask(ID: number) {
+      const index = this.todos.findIndex((todo) => {
+        return todo.id === ID;
+      });
+      await fetch(APISettings.baseURL + 'todo/' + ID, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: APISettings.headers,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.todos[index] = data;
+        })
+        .catch((err) => console.log(err.message));
+    },
     async countTasks() {
-      await fetch(APISettings.baseURL + '/todo/countTask', {
+      await fetch(APISettings.baseURL + 'todo/countTask', {
         credentials: 'include',
         method: 'GET',
         headers: APISettings.headers,
@@ -70,18 +84,12 @@ export const useTodoStore = defineStore({
         .catch((err) => console.log(err.message));
     },
     async postTask(newTask: string) {
-      console.log(newTask);
-      console.log('Inside POST');
       interface task {
         task: string;
       }
 
       const task: task = { task: newTask };
-      console.log('====================================');
-      console.log(task);
-      console.log(JSON.stringify(task));
-      console.log('====================================');
-      await fetch(APISettings.baseURL + '/todo', {
+      await fetch(APISettings.baseURL + 'todo', {
         method: 'POST',
         headers: APISettings.headers,
         credentials: 'include', //to get the cookie

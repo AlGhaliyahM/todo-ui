@@ -13,7 +13,7 @@ const router = useRouter();
 const submit = async () => {
   //Send data to back end
   let status = 401;
-  await fetch(APISettings.baseURL + '/user/register', {
+  await fetch(APISettings.baseURL + 'user/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
@@ -24,35 +24,6 @@ const submit = async () => {
 
   if (status === 201) await router.push('/');
 };
-// export default {
-//   // `setup` is a special hook dedicated for composition API.
-//   setup() {
-//     const data = reactive({
-//       name: '',
-//       email: '',
-//       password: '',
-//     });
-
-//     const router = useRouter();
-//     const submit = async () => {
-//       //Send data to back end
-
-//       await fetch(APISettings.baseURL + '/user/register', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         credentials: 'include', // to get the cookie
-//         body: JSON.stringify(data),
-//       });
-
-//       await router.push('/');
-//       //console.log(data);
-//     };
-//     return {
-//       data,
-//       submit,
-//     };
-//   },
-// };
 </script>
 
 <template>

@@ -13,7 +13,7 @@ const router = useRouter();
 const submit = async () => {
   //Send data to back end
   let status = 401;
-  await fetch(APISettings.baseURL + '/user/login', {
+  await fetch(APISettings.baseURL + 'user/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
@@ -21,6 +21,7 @@ const submit = async () => {
   })
     .then((response) => (status = response.status))
     .catch((err) => console.log(err.message));
+
   if (status === 201) await router.push('/');
 };
 </script>
