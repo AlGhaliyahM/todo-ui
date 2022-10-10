@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { APISettings } from '../api/config';
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import VueBasicAlert from 'vue-basic-alert';
+import { useAuthStore } from '../stores/auth';
 
-const data = ref({
+const authStore = useAuthStore();
+const data = reactive({
   email: '',
   password: '',
 });
@@ -13,17 +15,15 @@ const router = useRouter();
 
 const submit = async () => {
   //Send data to back end
-  let status = 401;
   await fetch(APISettings.baseURL + 'user/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
-    body: JSON.stringify(data.value),
-  })
-    .then((response) => (status = response.status))
-    .catch((err) => console.log(err.message));
+    body: JSON.stringify(data),
+  }).catch((err) => console.log(err.message));
 
-  if (status === 201) await router.push('/');
+  await authStore.isAuth();
+  if (authStore.getAuth) await router.push('/');
 };
 </script>
 

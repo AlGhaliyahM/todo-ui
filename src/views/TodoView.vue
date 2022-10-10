@@ -2,6 +2,17 @@
 import TaskCard from '../components/TaskCard.vue';
 import { useTodoStore } from '../stores/todo';
 import { ref } from 'vue';
+import { useAuthStore } from '../stores/auth';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+//routes the user to the login page if no cookie is set
+//there is a problem if you reload the page the state is reset
+const authStore = useAuthStore();
+
+if (!authStore.$state.authenticated) {
+  router.push('/login');
+}
 
 //initiate the store
 const todoStore = useTodoStore();

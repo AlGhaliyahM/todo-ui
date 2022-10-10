@@ -20,9 +20,6 @@ function changeState() {
   <div class="todoItem">
     <div v-if="props.is_done == false">
       <input class="check" type="checkbox" v-on:change="changeState()" />
-      <!-- <span v-bind:class="{ done: props.is_done }" style="color: black">
-      {{ props.Name }}
-    </span> -->
       <label style="color: black">
         {{ props.Name }}
       </label>
@@ -40,12 +37,9 @@ function changeState() {
       <input
         class="check"
         type="checkbox"
-        v-on:change="todoStore.updateTask(props.id, !props.is_done)"
+        v-on:change="changeState()"
         checked
       />
-      <!-- <span v-bind:class="{ done: props.is_done }" style="color: black">
-      {{ props.Name }}
-    </span> -->
       <label style="color: black">
         {{ props.Name }}
       </label>

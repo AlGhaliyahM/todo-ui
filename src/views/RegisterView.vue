@@ -1,28 +1,29 @@
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { APISettings } from '../api/config';
+import { useAuthStore } from '../stores/auth';
 
-const data = ref({
+const authStore = useAuthStore();
+const data = reactive({
   name: '',
   email: '',
   password: '',
 });
 
 const router = useRouter();
+
 const submit = async () => {
   //Send data to back end
-  let status = 401;
+
   await fetch(APISettings.baseURL + 'user/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
-    body: JSON.stringify(data.value),
-  })
-    .then((respones) => (status = respones.status))
-    .catch((err) => console.log(err.message));
-
-  if (status === 201) await router.push('/');
+    body: JSON.stringify(data),
+  }).catch((err) => console.log(err.message));
+  await authStore.isAuth();
+  if (authStore.getAuth) await router.push('/');
 };
 </script>
 

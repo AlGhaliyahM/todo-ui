@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores/auth';
-const authStore = useAuthStore();
+
+//the path does not update when the actual path does
+//need to fix it to complete
+const URL = window.location.href;
+const path = URL.split('/').pop();
 </script>
 
 <template>
@@ -13,30 +17,27 @@ const authStore = useAuthStore();
       >
       <div class="navbar" id="navbarNav">
         <ul class="navbar-nav">
-          <li>
+          <!-- if we are in the login page show the register route  -->
+          <li v-if="path === 'login'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
-              to="/signup"
+              to="/register"
               >Register
             </RouterLink>
           </li>
-
-          <!-- <li>
-            <button class="registerBorder">Register</button>
-          </li> -->
-
-          <!-- <li>
+          <!-- if we are in the register page show the login route  -->
+          <li v-if="path === 'register'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
               to="/Login"
               >Login</RouterLink
             >
-          </li> -->
+          </li>
         </ul>
-
-        <ul class="navbar-nav">
+        <!-- show the logout route if we are in the todo page -->
+        <ul class="navbar-nav" v-if="path === '/'">
           <li>
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
