@@ -5,6 +5,7 @@ export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     authenticated: false,
+    username:''
   }),
   getters: {
     getAuth: (state) => state.authenticated,
@@ -19,5 +20,14 @@ export const useAuthStore = defineStore({
         .then((data) => (this.authenticated = data))
         .catch(() => (this.authenticated = false));
     },
+
+    async logout() {     
+        await fetch(APISettings.baseURL + 'user/logout', {
+         method:'POST',
+          headers: APISettings.headers,
+          credentials: 'include',
+        })
+          .then((response) => response.json())
+      },
   },
 });

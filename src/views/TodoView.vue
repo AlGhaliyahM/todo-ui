@@ -10,9 +10,9 @@ const router = useRouter();
 //there is a problem if you reload the page the state is reset
 const authStore = useAuthStore();
 
-if (!authStore.$state.authenticated) {
-  router.push('/login');
-}
+// if (!authStore.$state.authenticated) {
+//   router.push('/login');
+// }
 
 //initiate the store
 const todoStore = useTodoStore();
