@@ -18,7 +18,7 @@ const path = URL.split('/').pop();
       <div class="navbar" id="navbarNav">
         <ul class="navbar-nav">
           <!-- if we are in the login page show the register route  -->
-          <li v-if="path === 'login'">
+          <li v-if="path?.toLowerCase() === 'login'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -27,7 +27,7 @@ const path = URL.split('/').pop();
             </RouterLink>
           </li>
           <!-- if we are in the register page show the login route  -->
-          <li v-if="path === 'register'">
+          <li v-if="path?.toLowerCase() === 'register'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -37,7 +37,7 @@ const path = URL.split('/').pop();
           </li>
         </ul>
         <!-- show the logout route if we are in the todo page -->
-        <ul class="navbar-nav" v-if="path === '/'">
+        <ul class="navbar-nav" v-if="path === ''">
           <li>
             <RouterLink
               style="color: whitesmoke; font-weight: 600"

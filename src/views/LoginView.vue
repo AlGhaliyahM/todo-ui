@@ -51,6 +51,17 @@ const submit = async () => {
 
         <button class="submitBtn" type="submit">Login to Your Account</button>
       </div>
+      <div style="display: flex; flex-direction: row">
+        <h6 style="margin-left: 20px; color: #ffffff; font-weight: 300">
+          Don't have an account?
+          <RouterLink
+            style="color: #95d3f8; font-weight: 500; text-decoration: none"
+            to="/register"
+          >
+            register</RouterLink
+          >
+        </h6>
+      </div>
     </form>
   </div>
 </template>
