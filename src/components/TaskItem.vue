@@ -44,10 +44,10 @@ function changeState() {
         {{ props.Name }}
       </label>
       <button
-        type="submit"
+        type="button"
         class="btn btn-dark"
         style="margin-left: 34rem; margin-top: -4rem"
-        v-on:click="todoStore.deleteTask(props.id)"
+        @click.prevent="todoStore.deleteTask(props.id)"
       >
         Delete
       </button>

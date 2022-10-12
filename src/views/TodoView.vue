@@ -10,15 +10,15 @@ const router = useRouter();
 //there is a problem if you reload the page the state is reset
 const authStore = useAuthStore();
 
-// if (!authStore.$state.authenticated) {
-//   router.push('/login');
-// }
+if (!authStore.$state.authenticated) {
+  router.push('/login');
+}
 
 //initiate the store
 const todoStore = useTodoStore();
 //store action
 todoStore.fetchTask();
-todoStore.countTasks();
+// todoStore.countTasks();
 
 const task = ref('');
 </script>
@@ -56,12 +56,12 @@ const task = ref('');
           style="flex-direction: column; margin-top: 30px; margin-left: 20px"
         >
           <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box1">{{ todoStore.$state.completedTodos }}</div>
+            <div class="box1">{{ todoStore.getCompletedTodos }}</div>
             <h6 class="statusText">Completed Todo</h6>
           </div>
 
           <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box2">{{ todoStore.$state.pendingTodos }}</div>
+            <div class="box2">{{ todoStore.getPendingTodos }}</div>
             <h6 class="statusText">Pending Todo</h6>
           </div>
         </div>

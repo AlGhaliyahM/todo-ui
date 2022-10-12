@@ -12,9 +12,13 @@ export const useTodoStore = defineStore({
   }),
 
   getters: {
-    getTodos: (state) => state.todos,
-    getCompletedTodos: (state) => state.completedTodos,
-    getPendingTodos: (state) => state.pendingTodos,
+    getTodos():any { return this.todos},
+    getCompletedTodos(): number {
+      return this.todos.filter(x=> x.is_done === true).length;
+    },
+    getPendingTodos (): number {
+      return this.todos.filter(x=> x.is_done !== true).length;
+    }
   },
 
   actions: {
@@ -39,18 +43,18 @@ export const useTodoStore = defineStore({
         headers: APISettings.headers,
       })
         .then((response) => {
-          if (response.status != 200) {
-            throw response.status;
-          } else {
+          if (response.status === 200) {
+            this.fetchTask();
+            console.log('task deleted' + ID);
             return response.json();
-          }
+          } 
+          throw response.status;
         })
-        .then(() => {
-          console.log('task deleted' + ID);
+        .catch((err) =>{
           this.fetchTask();
-          // console.log(this.todos);
-        })
-        .catch((err) => console.log(err.message));
+          console.log(err.message)
+        }
+          );
     },
     //getID() {},
     async updateTask(ID: number) {
@@ -96,6 +100,7 @@ export const useTodoStore = defineStore({
         body: JSON.stringify(task).toString(),
       })
         .then((res) => {
+          this.fetchTask();
           console.log('The task Added :  ' + res);
         })
         .catch((err) => console.log(err.message));
