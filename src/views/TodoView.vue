@@ -9,10 +9,10 @@ const router = useRouter();
 //routes the user to the login page if no cookie is set
 //there is a problem if you reload the page the state is reset
 const authStore = useAuthStore();
+
 // if (!authStore.$state.authenticated) {
 //   router.push('/login');
 // }
-// const emit = defineEmits(['updateNavbar']);
 
 //initiate the store
 const todoStore = useTodoStore();

@@ -20,9 +20,22 @@ const submit = async () => {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
     body: JSON.stringify(data),
-  }).catch((err) => console.log(err.message));
+  })
+    .then((response) => {
+      if (response.status == 401) {
+        alert('Email or password is not correct please try again');
+      }
+      if (response.status == 404) {
+        alert('Email or password is not correct please try again');
+      }
+      if (response.status == 201) {
+        alert('logged in successfully ');
+      }
+    })
+    .catch((err) => err.message);
 
   await authStore.isAuth();
+  console.log(authStore.getAuth);
   if (authStore.getAuth) await router.push('/');
 };
 </script>
