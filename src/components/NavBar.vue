@@ -5,7 +5,6 @@ import { useAuthStore } from '../stores/auth';
 //need to fix it to complete
 const URL = window.location.href;
 const path = URL.split('/').pop();
-console.log(path);
 const authStore = useAuthStore();
 
 authStore.isAuth();
@@ -22,9 +21,7 @@ authStore.isAuth();
       <div class="navbar" id="navbarNav">
         <ul class="navbar-nav">
           <!-- if we are in the login page show the register route  -->
-          <li
-            v-if="authStore.$state.authenticated == false && path === 'Login'"
-          >
+          <li v-if="authStore.getAuth == false && path === 'Login'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -33,11 +30,7 @@ authStore.isAuth();
             </RouterLink>
           </li>
           <!-- if we are in the register page show the login route  -->
-          <li
-            v-if="
-              authStore.$state.authenticated == false && path === 'register'
-            "
-          >
+          <li v-if="authStore.getAuth == false && path === 'register'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -47,7 +40,7 @@ authStore.isAuth();
           </li>
         </ul>
         <!-- show the logout route if we are in the todo page -->
-        <ul class="navbar-nav" v-if="authStore.$state.authenticated == true">
+        <ul class="navbar-nav" v-if="authStore.getAuth == true">
           <li style="color: gray; font-weight: 600" class="nav-link">
             username
           </li>

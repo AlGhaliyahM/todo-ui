@@ -6,22 +6,24 @@ import { useTodoStore } from '../stores/todo';
 const todoStore = useTodoStore();
 </script>
 <template>
-  <div class="todoList">
-    <!-- to access the store use todoStore.$state.todos  -->
-
-    <h2
-      style="text-align: center; margin-top: 200px"
-      v-if="todoStore.$state.todos.length == 0"
-    >
-      NO TODOS
-    </h2>
-    <TaskItem
-      v-for="todo in todoStore.$state.todos"
-      :key="todo.id"
-      :id="todo.id"
-      :Name="todo.task"
-      :is_done="todo.is_done"
-    />
+  <div class="card" style="border-radius: 15px; background-color: #495057">
+    <h6 class="boxTitle">My Todos</h6>
+    <div class="card-body p-5 overflow-scroll">
+      <ul class="list-group mb-0" v-if="todoStore.getTodoLength === 0"></ul>
+      <ul
+        class="list-group mb-0"
+        v-if="todoStore.getTodoLength !== 0"
+        style="border-radius: 15px"
+      >
+        <TaskItem
+          v-for="todo in todoStore.getTodos"
+          :key="todo.id"
+          :id="todo.id"
+          :name="todo.task"
+          :is_done="todo.is_done"
+        />
+      </ul>
+    </div>
   </div>
 </template>
 

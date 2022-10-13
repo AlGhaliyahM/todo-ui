@@ -35,7 +35,6 @@ const submit = async () => {
     .catch((err) => err.message);
 
   await authStore.isAuth();
-  console.log(authStore.getAuth);
   if (authStore.getAuth) await router.push('/');
 };
 </script>

@@ -17,60 +17,71 @@ if (!authStore.$state.authenticated) {
 //initiate the store
 const todoStore = useTodoStore();
 //store action
-todoStore.fetchTask();
+todoStore.getTask();
 // todoStore.countTasks();
-
+function addTask(task: string) {
+  todoStore.postTask(task);
+  this.task = '';
+}
 const task = ref('');
 </script>
 <template>
-  <div class="todoContainer">
-    <div class="columnContainer">
-      <div class="addtodoContainer">
-        <h6 class="boxTitle">Add Todo</h6>
-
-        <form @submit.prevent="todoStore.postTask(task)">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-direction: column;
-            "
-          >
-            <input
-              type="text"
-              v-model="task"
-              class="inputField"
-              style="margin-top: 30px; width: 400px"
-              placeholder="New Todo..."
-            />
-
-            <button class="addbtn" type="submit">Add Todo</button>
-          </div>
-        </form>
-      </div>
-      <div class="statusContainer">
-        <!-- <h6 class="boxTitle">Status</h6> -->
-
+  <div class="container py-5 h-100 px-4">
+    <div class="row d-flex justify-content-center align-items-start h-100 g-4">
+      <div class="col col-md-4" id="add todo card">
         <div
-          style="flex-direction: column; margin-top: 30px; margin-left: 20px"
+          class="card text-bg mb-3"
+          style="border-radius: 15px; background-color: #495057"
         >
-          <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box1">{{ todoStore.getCompletedTodos }}</div>
-            <h6 class="statusText">Completed Todo</h6>
-          </div>
+          <div class="card-body p-4">
+            <h6 class="mb-3 boxTitle">Add Todo</h6>
 
-          <div style="display: flex; flex-direction: row; margin: 20px">
-            <div class="box2">{{ todoStore.getPendingTodos }}</div>
-            <h6 class="statusText">Pending Todo</h6>
+            <form
+              class="d-flex justify-content-center align-items-center mb-4"
+              @submit.prevent="addTask(task)"
+            >
+              <div class="form-outline flex-fill input-group">
+                <input
+                  id="add-task-input"
+                  type="text"
+                  v-model="task"
+                  class="form-control form-control-lg"
+                  style="background-color: #2d2e36; color: azure"
+                  placeholder="New Todo..."
+                />
+                <button
+                  id="button-addon1"
+                  type="submit"
+                  class="addbtn btn btn-primary btn-lg ms-2"
+                >
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="card text-bg mb-3"
+          style="border-radius: 15px; background-color: #495057"
+        >
+          <div class="card-body p-5">
+            <div style="flex-direction: column">
+              <div style="display: flex; flex-direction: row; margin: 10px">
+                <div class="box2">{{ todoStore.getCompletedTodos }}</div>
+                <h6 class="statusText" style="color: black">Completed Todo</h6>
+              </div>
+
+              <div style="display: flex; flex-direction: row; margin: 10px">
+                <div class="box1">{{ todoStore.getPendingTodos }}</div>
+                <h6 class="statusText" style="color: black">Pending Todo</h6>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="mytodosContainer" style="overflow-y: scroll">
-      <h6 class="boxTitle">My Todos</h6>
-      <TaskCard />
+      <div id="todo list card" class="col col-md-6">
+        <TaskCard />
+      </div>
     </div>
   </div>
 </template>

@@ -12,17 +12,22 @@ export const useTodoStore = defineStore({
   }),
 
   getters: {
-    getTodos():any { return this.todos},
-    getCompletedTodos(): number {
-      return this.todos.filter(x=> x.is_done === true).length;
+    getTodos(): any {
+      return this.todos;
     },
-    getPendingTodos (): number {
-      return this.todos.filter(x=> x.is_done !== true).length;
-    }
+    getCompletedTodos(): number {
+      return this.todos.filter((x) => x.is_done === true).length;
+    },
+    getPendingTodos(): number {
+      return this.todos.filter((x) => x.is_done !== true).length;
+    },
+    getTodoLength(): number {
+      return this.todos.length;
+    },
   },
 
   actions: {
-    async fetchTask() {
+    async getTask() {
       await fetch(APISettings.baseURL + 'todo/', {
         credentials: 'include',
         method: 'GET',
@@ -35,6 +40,10 @@ export const useTodoStore = defineStore({
         })
         .catch((err) => console.log(err.message));
       // return this.todo;
+      const trueFirst = this.todos.sort(
+        (a, b) => Number(a.is_done) - Number(b.is_done),
+      );
+      this.todos = trueFirst;
     },
     async deleteTask(ID: number) {
       await fetch(APISettings.baseURL + 'todo/' + ID, {
@@ -44,17 +53,16 @@ export const useTodoStore = defineStore({
       })
         .then((response) => {
           if (response.status === 200) {
-            this.fetchTask();
+            this.getTask();
             console.log('task deleted' + ID);
             return response.json();
-          } 
+          }
           throw response.status;
         })
-        .catch((err) =>{
-          this.fetchTask();
-          console.log(err.message)
-        }
-          );
+        .catch((err) => {
+          this.getTask();
+          console.log(err.message);
+        });
     },
     //getID() {},
     async updateTask(ID: number) {
@@ -71,6 +79,10 @@ export const useTodoStore = defineStore({
           this.todos[index] = data;
         })
         .catch((err) => console.log(err.message));
+      const trueFirst = this.todos.sort(
+        (a, b) => Number(a.is_done) - Number(b.is_done),
+      );
+      this.todos = trueFirst;
     },
     async countTasks() {
       await fetch(APISettings.baseURL + 'todo/countTask', {
@@ -99,13 +111,10 @@ export const useTodoStore = defineStore({
         credentials: 'include', //to get the cookie
         body: JSON.stringify(task).toString(),
       })
-        .then((res) => {
-          this.fetchTask();
-          console.log('The task Added :  ' + res);
+        .then(() => {
+          this.getTask();
         })
         .catch((err) => console.log(err.message));
     },
-
-    
   },
 });
