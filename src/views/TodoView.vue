@@ -10,7 +10,7 @@ const router = useRouter();
 //there is a problem if you reload the page the state is reset
 const authStore = useAuthStore();
 
-if (!authStore.$state.authenticated) {
+if (!authStore.getAuth) {
   router.push('/login');
 }
 
@@ -33,7 +33,7 @@ const task = ref('');
           class="card text-bg mb-3"
           style="border-radius: 15px; background-color: #495057"
         >
-          <div class="card-body p-4">
+          <div class="card-body p-3">
             <h6 class="mb-3 boxTitle">Add Todo</h6>
 
             <form
@@ -67,13 +67,12 @@ const task = ref('');
           <div class="card-body p-5">
             <div style="flex-direction: column">
               <div style="display: flex; flex-direction: row; margin: 10px">
-                <div class="box2">{{ todoStore.getCompletedTodos }}</div>
-                <h6 class="statusText" style="color: black">Completed Todo</h6>
-              </div>
-
-              <div style="display: flex; flex-direction: row; margin: 10px">
                 <div class="box1">{{ todoStore.getPendingTodos }}</div>
                 <h6 class="statusText" style="color: black">Pending Todo</h6>
+              </div>
+              <div style="display: flex; flex-direction: row; margin: 10px">
+                <div class="box2">{{ todoStore.getCompletedTodos }}</div>
+                <h6 class="statusText" style="color: black">Completed Todo</h6>
               </div>
             </div>
           </div>

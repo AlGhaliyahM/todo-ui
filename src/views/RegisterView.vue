@@ -28,9 +28,21 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="blackContainer">
+  <div class="blackContainer" style="border-radius: 15px">
     <form @submit.prevent="submit">
       <h1 class="textBox">Register new Account</h1>
+      <h6
+        class="textBox"
+        style="color: #ffffff; font-weight: 300; font-size: 16px"
+      >
+        Already have an account?
+        <RouterLink
+          style="color: #95d3f8; font-weight: 500; text-decoration: none"
+          to="/Login"
+        >
+          Login</RouterLink
+        >
+      </h6>
 
       <div class="inputContainer">
         <input
@@ -57,18 +69,6 @@ const submit = async () => {
         />
 
         <button class="submitBtn" type="submit">Register Account</button>
-      </div>
-
-      <div style="display: flex; flex-direction: row">
-        <h6 style="margin-left: 20px; color: #ffffff; font-weight: 300">
-          Already have an account?
-          <RouterLink
-            style="color: #95d3f8; font-weight: 500; text-decoration: none"
-            to="/Login"
-          >
-            Login</RouterLink
-          >
-        </h6>
       </div>
     </form>
   </div>

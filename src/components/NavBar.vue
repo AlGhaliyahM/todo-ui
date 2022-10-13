@@ -42,7 +42,7 @@ authStore.isAuth();
         <!-- show the logout route if we are in the todo page -->
         <ul class="navbar-nav" v-if="authStore.getAuth == true">
           <li style="color: gray; font-weight: 600" class="nav-link">
-            username
+            {{ authStore.getName }}
           </li>
           <li>
             <RouterLink

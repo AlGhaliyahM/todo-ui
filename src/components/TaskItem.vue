@@ -54,9 +54,9 @@ function changeState() {
     </li>
   </div>
 
-  <div v-if="props.is_done == true">
+  <div v-if="props.is_done == true" style="border-color: #adb5bd">
     <li
-      style="background-color: #adb5bd"
+      style="background-color: #adb5bd; border-color: #adb5bd"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">

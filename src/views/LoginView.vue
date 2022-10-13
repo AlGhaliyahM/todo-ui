@@ -2,7 +2,6 @@
 import { APISettings } from '../api/config';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import VueBasicAlert from 'vue-basic-alert';
 import { useAuthStore } from '../stores/auth';
 
 const authStore = useAuthStore();
@@ -40,9 +39,21 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="blackContainer">
+  <div class="blackContainer" style="border-radius: 15px">
     <form @submit.prevent="submit">
       <h1 class="textBox">Log in to Your Account</h1>
+      <h6
+        class="textBox"
+        style="color: #ffffff; font-weight: 300; font-size: 16px"
+      >
+        Don't have an account?
+        <RouterLink
+          style="color: #95d3f8; font-weight: 500; text-decoration: none"
+          to="/register"
+        >
+          register</RouterLink
+        >
+      </h6>
 
       <div class="inputContainer">
         <input
@@ -62,17 +73,6 @@ const submit = async () => {
         />
 
         <button class="submitBtn" type="submit">Login to Your Account</button>
-      </div>
-      <div style="display: flex; flex-direction: row">
-        <h6 style="margin-left: 20px; color: #ffffff; font-weight: 300">
-          Don't have an account?
-          <RouterLink
-            style="color: #95d3f8; font-weight: 500; text-decoration: none"
-            to="/register"
-          >
-            register</RouterLink
-          >
-        </h6>
       </div>
     </form>
   </div>

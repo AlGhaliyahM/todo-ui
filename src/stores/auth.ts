@@ -9,6 +9,7 @@ export const useAuthStore = defineStore({
   }),
   getters: {
     getAuth: (state) => state.authenticated,
+    getName: (state) => state.username,
   },
   actions: {
     async isAuth() {
@@ -17,7 +18,12 @@ export const useAuthStore = defineStore({
         credentials: 'include',
       })
         .then((response) => response.json())
-        .then((data) => (this.authenticated = data))
+        .then(
+          (data) => (
+            (this.authenticated = data.authenticated),
+            (this.username = data.name)
+          ),
+        )
         .catch(() => (this.authenticated = false));
     },
 

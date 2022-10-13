@@ -1,4 +1,4 @@
-@import "./base.css";
+@import './base.css';
 
 #app {
   /* max-width: 1280px; */
@@ -59,15 +59,18 @@
 .submitBtn {
   border-radius: 10px;
   border-width: 0ch;
-  background-color: #c6bbf8;
+  background-color: #7661d7;
   width: 350px;
   height: 50px;
   margin: 10px;
   text-align: left;
   padding-left: 15px;
+  color: #ffffff;
 }
-
-.loginQues{
+.submitBtn:hover {
+  background-color: #4d3f90;
+}
+.loginQues {
   margin-left: 20px;
   color: #ffffff;
   font-weight: 300;
@@ -99,6 +102,9 @@
   border-width: 0ch;
   background-color: #7661d7;
 }
+.addbtn:hover {
+  background-color: #4d3f90;
+}
 .statusContainer {
   background-color: #1c1d24;
   border-radius: 10px;
@@ -106,7 +112,6 @@
   height: 200px;
   margin-top: 30px;
   display: flex;
-  
 }
 .mytodosContainer {
   background-color: #1c1d24;
@@ -115,7 +120,6 @@
   height: 530px;
   margin-left: 600px;
   margin-top: -530px;
-  
 }
 .boxTitle {
   color: #ffffff;
@@ -153,7 +157,6 @@
   margin-top: 10px;
   font-weight: 500;
   font-size: 18px;
-
 }
 
 /* a,
