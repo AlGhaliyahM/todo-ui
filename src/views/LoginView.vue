@@ -39,7 +39,7 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="blackContainer" style="border-radius: 15px">
+  <div class="blackContainer col col-md-6" style="border-radius: 15px">
     <form @submit.prevent="submit">
       <h1 class="textBox">Log in to Your Account</h1>
       <h6
@@ -48,7 +48,7 @@ const submit = async () => {
       >
         Don't have an account?
         <RouterLink
-          style="color: #95d3f8; font-weight: 500; text-decoration: none"
+          style="color: #00b9be; font-weight: 500; text-decoration: none"
           to="/register"
         >
           register</RouterLink

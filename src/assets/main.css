@@ -10,7 +10,16 @@
   background: -webkit-linear-gradient(0deg, #ffffff 0%, #b8b8ba 100%);
   background: linear-gradient(0deg, #ffffff 0%, #b8b8ba 100%); */
 }
-
+.body {
+  background: #2b2f77;
+  background: -webkit-linear-gradient(
+    0deg,
+    #2b2f77 0%,
+    #141852 50%,
+    #070b34 100%
+  );
+  background: linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+}
 /* Custom style */
 
 .textBox {
@@ -25,11 +34,18 @@
 .blackContainer {
   height: 550px;
   width: 500px;
-  background-color: #495057;
+  background-color: #004080;
   margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 100px;
+  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
+    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
+    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
+    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
+    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
+    55px 107px 310px rgba(0, 0, 0, 0.19);
 }
 
 .inputContainer {
@@ -59,7 +75,7 @@
 .submitBtn {
   border-radius: 10px;
   border-width: 0ch;
-  background-color: #7661d7;
+  background-color: #1d2378;
   width: 350px;
   height: 50px;
   margin: 10px;
@@ -68,7 +84,7 @@
   color: #ffffff;
 }
 .submitBtn:hover {
-  background-color: #4d3f90;
+  background-color: #141852;
 }
 .loginQues {
   margin-left: 20px;
@@ -77,10 +93,15 @@
 }
 
 .todoContainer {
-  margin-top: 30px;
-  width: 100%;
-  height: 700px;
-  background-color: #495057;
+  margin-bottom: 200px;
+  max-height: 410px;
+  min-height: auto;
+  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
+    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
+    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
+    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
+    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
+    55px 107px 310px rgba(0, 0, 0, 0.19);
 }
 
 .columnContainer {
@@ -90,28 +111,29 @@
   /* width: 500px; */
 }
 .addtodoContainer {
-  /* margin-top: 50px; */
-  background-color: #1c1d24;
-  border-radius: 10px;
-  width: 500px;
-  height: 300px;
+  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
+    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
+    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
+    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
+    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
+    55px 107px 310px rgba(0, 0, 0, 0.19);
 }
 
 .addbtn {
   border-radius: 10px;
   border-width: 0ch;
-  background-color: #7661d7;
+  background-color: #141852;
 }
 .addbtn:hover {
-  background-color: #4d3f90;
+  background-color: #1d2378;
 }
 .statusContainer {
-  background-color: #1c1d24;
-  border-radius: 10px;
-  width: 500px;
-  height: 200px;
-  margin-top: 30px;
-  display: flex;
+  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
+    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
+    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
+    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
+    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
+    55px 107px 310px rgba(0, 0, 0, 0.19);
 }
 .mytodosContainer {
   background-color: #1c1d24;
@@ -132,7 +154,7 @@
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  background-color: #ff8000;
+  background-color: #ffbf00;
   /* justify-content: center; */
   color: #151515;
   text-align: center;
@@ -143,7 +165,7 @@
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  background-color: #95f8d4;
+  background-color: #0ee12e;
   /* justify-content: center; */
   color: #151515;
   text-align: center;

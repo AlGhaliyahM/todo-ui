@@ -33,6 +33,7 @@ export const useAuthStore = defineStore({
         headers: APISettings.headers,
         credentials: 'include',
       }).then((response) => response.json());
+      this.authenticated = false;
     },
   },
 });

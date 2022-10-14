@@ -19,18 +19,20 @@ function changeState() {
 <template>
   <div v-if="props.is_done == false">
     <li
-      style="background-color: #adb5bd"
+      style="background-color: #748cab"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
         <input
           v-on:change="changeState()"
-          class="form-check-input me-2"
+          class="form-check-input me-3"
           type="checkbox"
           value=""
           aria-label="..."
         />
-        <label class="form-check-label">{{ props.name }}</label>
+        <label class="form-check-label" style="color: azure">{{
+          props.name
+        }}</label>
         <!-- {{ props.name }} -->
       </div>
       <a
@@ -54,9 +56,9 @@ function changeState() {
     </li>
   </div>
 
-  <div v-if="props.is_done == true" style="border-color: #adb5bd">
+  <div v-if="props.is_done == true">
     <li
-      style="background-color: #adb5bd; border-color: #adb5bd"
+      style="background-color: #748cab"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
@@ -100,7 +102,7 @@ function changeState() {
 
 .todoItem {
   margin: 7px;
-  background-color: #adb5bd;
+  background-color: #0091b9;
   font-size: larger;
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

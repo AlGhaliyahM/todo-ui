@@ -37,7 +37,7 @@ const submit = async () => {
       >
         Already have an account?
         <RouterLink
-          style="color: #95d3f8; font-weight: 500; text-decoration: none"
+          style="color: #00b9be; font-weight: 500; text-decoration: none"
           to="/Login"
         >
           Login</RouterLink

@@ -19,8 +19,8 @@ authStore.isAuth();
         ></a
       >
       <div class="navbar" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- if we are in the login page show the register route  -->
+        <!-- <ul class="navbar-nav">
+          if we are in the login page show the register route 
           <li v-if="authStore.getAuth == false && path === 'Login'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
@@ -29,7 +29,7 @@ authStore.isAuth();
               >Register
             </RouterLink>
           </li>
-          <!-- if we are in the register page show the login route  -->
+          if we are in the register page show the login route 
           <li v-if="authStore.getAuth == false && path === 'register'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
@@ -38,10 +38,10 @@ authStore.isAuth();
               >Login</RouterLink
             >
           </li>
-        </ul>
+        </ul> -->
         <!-- show the logout route if we are in the todo page -->
         <ul class="navbar-nav" v-if="authStore.getAuth == true">
-          <li style="color: gray; font-weight: 600" class="nav-link">
+          <li style="color: whitesmoke; font-weight: 600" class="nav-link">
             {{ authStore.getName }}
           </li>
           <li>
