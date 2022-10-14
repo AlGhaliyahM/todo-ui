@@ -31,7 +31,7 @@ const task = ref('');
       <div class="col col-md-4" id="add todo card">
         <div
           class="card text-bg mb-3 addtodoContainer"
-          style="border-radius: 15px; background-color: #006da7"
+          style="border-radius: 15px; background-color: #004080"
         >
           <div class="card-body p-3">
             <h6 class="mb-3 boxTitle">Add Todo</h6>
@@ -62,7 +62,7 @@ const task = ref('');
         </div>
         <div
           class="card text-bg mb-3"
-          style="border-radius: 15px; background-color: #006DA7"
+          style="border-radius: 15px; background-color: #004080"
         >
           <div class="card-body p-5 statusContainer">
             <div style="flex-direction: column">
