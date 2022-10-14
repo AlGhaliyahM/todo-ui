@@ -19,7 +19,7 @@ function changeState() {
 <template>
   <div v-if="props.is_done == false">
     <li
-      style="background-color: #748cab"
+      style="background-color: azure"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@ function changeState() {
           value=""
           aria-label="..."
         />
-        <label class="form-check-label" style="color: azure">{{
+        <label class="form-check-label" style="color: black">{{
           props.name
         }}</label>
         <!-- {{ props.name }} -->
@@ -58,13 +58,13 @@ function changeState() {
 
   <div v-if="props.is_done == true">
     <li
-      style="background-color: #748cab"
+      style="background-color: azure"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
         <input
           v-on:change="changeState()"
-          class="form-check-input me-2"
+          class="form-check-input me-3"
           type="checkbox"
           value=""
           aria-label="..."
