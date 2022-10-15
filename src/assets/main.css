@@ -40,12 +40,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
-  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
-    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
-    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
-    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
-    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
-    55px 107px 310px rgba(0, 0, 0, 0.19);
+  box-shadow: 12.2px 17.5px 43px -14px rgba(0, 0, 0, 0.209),
+    26.7px 38.2px 91.8px -14px rgba(0, 0, 0, 0.254),
+    44.6px 63.8px 151.8px -14px rgba(0, 0, 0, 0.264),
+    64.1px 91.6px 233.7px -14px rgba(0, 0, 0, 0.262),
+    80.3px 114.8px 339.2px -14px rgba(0, 0, 0, 0.253),
+    93px 133px 445px -14px rgba(0, 0, 0, 0.24);
 }
 
 .inputContainer {
@@ -96,12 +96,12 @@
   margin-bottom: 200px;
   max-height: 410px;
   min-height: auto;
-  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
-    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
-    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
-    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
-    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
-    55px 107px 310px rgba(0, 0, 0, 0.19);
+  box-shadow: 12.2px 17.5px 43px -14px rgba(0, 0, 0, 0.209),
+    26.7px 38.2px 91.8px -14px rgba(0, 0, 0, 0.254),
+    44.6px 63.8px 151.8px -14px rgba(0, 0, 0, 0.264),
+    64.1px 91.6px 233.7px -14px rgba(0, 0, 0, 0.262),
+    80.3px 114.8px 339.2px -14px rgba(0, 0, 0, 0.253),
+    93px 133px 445px -14px rgba(0, 0, 0, 0.24);
 }
 
 .columnContainer {
@@ -111,12 +111,12 @@
   /* width: 500px; */
 }
 .addtodoContainer {
-  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
-    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
-    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
-    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
-    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
-    55px 107px 310px rgba(0, 0, 0, 0.19);
+  box-shadow: 12.2px 17.5px 43px -14px rgba(0, 0, 0, 0.209),
+    26.7px 38.2px 91.8px -14px rgba(0, 0, 0, 0.254),
+    44.6px 63.8px 151.8px -14px rgba(0, 0, 0, 0.264),
+    64.1px 91.6px 233.7px -14px rgba(0, 0, 0, 0.262),
+    80.3px 114.8px 339.2px -14px rgba(0, 0, 0, 0.253),
+    93px 133px 445px -14px rgba(0, 0, 0, 0.24);
 }
 
 .addbtn {
@@ -128,12 +128,12 @@
   background-color: #1d2378;
 }
 .statusContainer {
-  box-shadow: 6.2px 12px 29.9px rgba(0, 0, 0, 0.033),
-    11.4px 22.2px 63.9px rgba(0, 0, 0, 0.052),
-    16.1px 31.4px 105.8px rgba(0, 0, 0, 0.068),
-    21.3px 41.5px 162.8px rgba(0, 0, 0, 0.089),
-    29.5px 57.4px 236.3px rgba(0, 0, 0, 0.122),
-    55px 107px 310px rgba(0, 0, 0, 0.19);
+  box-shadow: 12.2px 17.5px 43px -14px rgba(0, 0, 0, 0.209),
+    26.7px 38.2px 91.8px -14px rgba(0, 0, 0, 0.254),
+    44.6px 63.8px 151.8px -14px rgba(0, 0, 0, 0.264),
+    64.1px 91.6px 233.7px -14px rgba(0, 0, 0, 0.262),
+    80.3px 114.8px 339.2px -14px rgba(0, 0, 0, 0.253),
+    93px 133px 445px -14px rgba(0, 0, 0, 0.24);
 }
 .mytodosContainer {
   background-color: #1c1d24;
@@ -154,7 +154,7 @@
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  background-color: #ffbf00;
+  background-color: #ffaa00;
   /* justify-content: center; */
   color: #151515;
   text-align: center;

@@ -29,15 +29,14 @@
 }
 
 body {
-  /* min-height: 100vh; */
-  background: #2b2f77;
+  background: #343a9d;
   background: -webkit-linear-gradient(
     0deg,
-    #2b2f77 0%,
-    #141852 50%,
+    #343a9d 0%,
+    #212881 50%,
     #070b34 100%
   );
-  background: linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+  background: linear-gradient(0deg, #343a9d 0%, #212881 50%, #070b34 100%);
   color: var(--color-text);
   /* background: var(--color-background); */
   line-height: 1.6;

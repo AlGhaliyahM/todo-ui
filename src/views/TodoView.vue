@@ -61,10 +61,10 @@ const task = ref('');
           </div>
         </div>
         <div
-          class="card text-bg mb-3"
+          class="card text-bg mb-3 statusContainer"
           style="border-radius: 15px; background-color: #004080"
         >
-          <div class="card-body p-5 statusContainer">
+          <div class="card-body p-5 ">
             <div style="flex-direction: column">
               <div style="display: flex; flex-direction: row; margin: 10px">
                 <div class="box1">{{ todoStore.getPendingTodos }}</div>
