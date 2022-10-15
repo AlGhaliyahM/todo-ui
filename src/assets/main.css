@@ -10,16 +10,6 @@
   background: -webkit-linear-gradient(0deg, #ffffff 0%, #b8b8ba 100%);
   background: linear-gradient(0deg, #ffffff 0%, #b8b8ba 100%); */
 }
-.body {
-  background: #2b2f77;
-  background: -webkit-linear-gradient(
-    0deg,
-    #2b2f77 0%,
-    #141852 50%,
-    #070b34 100%
-  );
-  background: linear-gradient(0deg, #2b2f77 0%, #141852 50%, #070b34 100%);
-}
 /* Custom style */
 
 .textBox {
@@ -34,7 +24,7 @@
 .blackContainer {
   height: 550px;
   width: 500px;
-  background-color: #004080;
+  background-color: #395B64;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -57,17 +47,17 @@
 
 .inputField {
   border-radius: 10px;
-  background-color: #2d2e36;
+  background-color: #E7F6F2;
   width: 350px;
   height: 50px;
   border-width: 0ch;
-  color: #ffffff;
+  color: #2d2e36;
   margin: 10px;
   padding-left: 15px;
 }
 
 ::placeholder {
-  color: #ffffff;
+  color: #2d2e36;
   padding-left: 15px;
   font-weight: 300;
 }
@@ -75,16 +65,16 @@
 .submitBtn {
   border-radius: 10px;
   border-width: 0ch;
-  background-color: #1d2378;
+  background-color: #a5c9ca;
   width: 350px;
   height: 50px;
   margin: 10px;
   text-align: left;
   padding-left: 15px;
-  color: #ffffff;
+  color: #2d2e36;
 }
 .submitBtn:hover {
-  background-color: #141852;
+  background-color: #84a0a1;
 }
 .loginQues {
   margin-left: 20px;
@@ -122,10 +112,11 @@
 .addbtn {
   border-radius: 10px;
   border-width: 0ch;
-  background-color: #141852;
+  color: #2d2e36;
+  background-color: #a5c9ca;
 }
 .addbtn:hover {
-  background-color: #1d2378;
+  background-color: #84a0a1;
 }
 .statusContainer {
   box-shadow: 12.2px 17.5px 43px -14px rgba(0, 0, 0, 0.209),

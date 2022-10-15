@@ -19,7 +19,7 @@ function changeState() {
 <template>
   <div v-if="props.is_done == false">
     <li
-      style="background-color: azure"
+      style="background-color: #a5c9ca"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
@@ -58,7 +58,7 @@ function changeState() {
 
   <div v-if="props.is_done == true">
     <li
-      style="background-color: azure"
+      style="background-color: #a5c9ca"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">

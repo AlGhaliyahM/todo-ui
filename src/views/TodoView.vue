@@ -31,7 +31,7 @@ const task = ref('');
       <div class="col col-md-4" id="add todo card">
         <div
           class="card text-bg mb-3 addtodoContainer"
-          style="border-radius: 15px; background-color: #004080"
+          style="border-radius: 15px; background-color: #395b64"
         >
           <div class="card-body p-3">
             <h6 class="mb-3 boxTitle">Add Todo</h6>
@@ -46,7 +46,7 @@ const task = ref('');
                   type="text"
                   v-model="task"
                   class="form-control form-control-lg"
-                  style="background-color: #0a0c29; color: azure"
+                  style="background-color: #E7F6F2; color: #2d2e36"
                   placeholder="New Todo..."
                 />
                 <button
@@ -62,9 +62,9 @@ const task = ref('');
         </div>
         <div
           class="card text-bg mb-3 statusContainer"
-          style="border-radius: 15px; background-color: #004080"
+          style="border-radius: 15px; background-color: #395b64"
         >
-          <div class="card-body p-5 ">
+          <div class="card-body p-5">
             <div style="flex-direction: column">
               <div style="display: flex; flex-direction: row; margin: 10px">
                 <div class="box1">{{ todoStore.getPendingTodos }}</div>

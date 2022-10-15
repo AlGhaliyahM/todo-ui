@@ -8,7 +8,7 @@ const todoStore = useTodoStore();
 <template>
   <div
     class="card todoContainer"
-    style="border-radius: 15px; background-color: #004080"
+    style="border-radius: 15px; background-color: #395B64"
   >
     <h6 class="mb-6 boxTitle">My Todos</h6>
 
