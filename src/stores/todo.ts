@@ -2,7 +2,13 @@ import { defineStore } from 'pinia';
 import { APISettings } from '../api/config';
 
 //TODO: 'Check all the responses to be consistent and add alert message for : post, delete,update';
-
+interface task {
+  task: string;
+  id: number;
+  createdAt: Date;
+  UpdatedAt: Date;
+  is_done: boolean;
+}
 export const useTodoStore = defineStore({
   id: 'todo',
   state: () => ({
@@ -100,11 +106,10 @@ export const useTodoStore = defineStore({
         .catch((err) => console.log(err.message));
     },
     async postTask(newTask: string) {
-      interface task {
-        task: string;
-      }
+      const task: task = {
+        task: newTask,
+      };
 
-      const task: task = { task: newTask };
       await fetch(APISettings.baseURL + 'todo', {
         method: 'POST',
         headers: APISettings.headers,

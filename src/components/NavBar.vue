@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores/auth';
 import router from '../router/index';
+import { computed } from 'vue';
 
 const authStore = useAuthStore();
 const path = computed(() => {
