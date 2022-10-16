@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores/auth';
+import router from '../router/index';
 
-//the path does not update when the actual path does
-//need to fix it to complete
-const URL = window.location.href;
-const path = URL.split('/').pop();
 const authStore = useAuthStore();
-
+const path = computed(() => {
+  return router.currentRoute;
+  // return window.location.href.split('/').pop();
+});
 authStore.isAuth();
 </script>
 
@@ -19,9 +19,9 @@ authStore.isAuth();
         ></a
       >
       <div class="navbar" id="navbarNav">
-        <!-- <ul class="navbar-nav">
-          if we are in the login page show the register route 
-          <li v-if="authStore.getAuth == false && path === 'Login'">
+        <ul class="navbar-nav">
+          <!-- if we are in the login page show the register route  -->
+          <li v-if="path.value.name === 'login'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -29,8 +29,8 @@ authStore.isAuth();
               >Register
             </RouterLink>
           </li>
-          if we are in the register page show the login route 
-          <li v-if="authStore.getAuth == false && path === 'register'">
+          <!-- if we are in the register page show the login route  -->
+          <li v-if="path.value.name === 'register'">
             <RouterLink
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
@@ -38,9 +38,13 @@ authStore.isAuth();
               >Login</RouterLink
             >
           </li>
-        </ul> -->
+        </ul>
+
         <!-- show the logout route if we are in the todo page -->
-        <ul class="navbar-nav" v-if="authStore.getAuth == true">
+        <ul
+          class="navbar-nav"
+          v-if="authStore.getAuth == true && path.value.name == 'Todo'"
+        >
           <li style="color: whitesmoke; font-weight: 600" class="nav-link">
             {{ authStore.getName }}
           </li>
