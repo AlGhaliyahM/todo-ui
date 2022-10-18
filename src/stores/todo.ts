@@ -59,14 +59,15 @@ export const useTodoStore = defineStore({
       })
         .then((response) => {
           if (response.status === 200) {
-            this.getTask();
+            this.todos = this.todos.filter((todo) => todo.id !== ID);
             console.log('task deleted' + ID);
             return response.json();
           }
           throw response.status;
         })
         .catch((err) => {
-          this.todos = this.todos.filter((todo) => todo.id !== ID);
+          // this.getTask();
+          // this.todos = this.todos.filter((todo) => todo.id !== ID);
           console.log(err.message);
         });
     },
