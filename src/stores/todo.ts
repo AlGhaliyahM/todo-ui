@@ -66,7 +66,7 @@ export const useTodoStore = defineStore({
           throw response.status;
         })
         .catch((err) => {
-          this.getTask();
+          this.todos = this.todos.filter((todo) => todo.id !== ID);
           console.log(err.message);
         });
     },
@@ -85,10 +85,11 @@ export const useTodoStore = defineStore({
           this.todos[index] = data;
         })
         .catch((err) => console.log(err.message));
-      const trueFirst = this.todos.sort(
+
+      const falseFirst = this.todos.sort(
         (a, b) => Number(a.is_done) - Number(b.is_done),
       );
-      this.todos = trueFirst;
+      this.todos = falseFirst;
     },
     async countTasks() {
       await fetch(APISettings.baseURL + 'todo/countTask', {
