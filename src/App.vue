@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import NavBar from './components/NavBar.vue';
+// import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
-  <NavBar />
-  <div class="d-flex justify-content-center">
+  <!-- <NavBar /> -->
+  <div>
+    <RouterView name="NavBar" />
     <RouterView />
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

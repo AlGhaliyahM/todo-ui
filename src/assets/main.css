@@ -23,7 +23,7 @@
 
 .blackContainer {
   height: 550px;
-  width: 500px;
+  max-width: 500px;
   background-color: #395B64;
   margin-top: 30px;
   display: flex;

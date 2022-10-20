@@ -9,17 +9,26 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/RegisterView.vue'),
+      components: {
+        default: () => import('../views/RegisterView.vue'),
+        NavBar: () => import('@/components/NavBar.vue'),
+      },
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue'),
+      components: {
+        default: () => import('../views/LoginView.vue'),
+        NavBar: () => import('@/components/NavBar.vue'),
+      },
     },
     {
       path: '/',
       name: 'Todo',
-      component: () => import('../views/TodoView.vue'),
+      components: {
+        default: () => import('../views/TodoView.vue'),
+        NavBar: () => import('@/components/NavBar.vue'),
+      },
     },
   ],
 });

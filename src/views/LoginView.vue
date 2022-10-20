@@ -39,7 +39,10 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="blackContainer col col-md-6" style="border-radius: 15px">
+  <div
+    class="container blackContainer col col-md-6"
+    style="border-radius: 15px"
+  >
     <form @submit.prevent="submit">
       <h1 class="textBox">Log in to Your Account</h1>
       <h6

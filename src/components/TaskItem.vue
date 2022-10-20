@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTodoStore } from '../stores/todo';
-import { ref } from 'vue';
+import IconDelete from './icons/IconDelete.vue';
 //initiate the store
 const todoStore = useTodoStore();
 
@@ -35,24 +35,9 @@ function changeState() {
         }}</label>
         <!-- {{ props.name }} -->
       </div>
-      <a
-        @click.prevent="todoStore.deleteTask(props.id || 0)"
-        data-mdb-toggle="tooltip"
-        title="Remove item"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-x-lg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-          />
-        </svg>
-      </a>
+      <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
+        <IconDelete />
+      </button>
     </li>
   </div>
 
@@ -73,24 +58,9 @@ function changeState() {
         <label class="form-check-label">{{ props.name }}</label>
         <!-- {{ props.name }} -->
       </div>
-      <a
-        @click.prevent="todoStore.deleteTask(props.id || 0)"
-        data-mdb-toggle="tooltip"
-        title="Remove item"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-x-lg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-          />
-        </svg>
-      </a>
+      <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
+        <IconDelete />
+      </button>
     </li>
   </div>
 </template>
@@ -118,5 +88,13 @@ input[type='checkbox']:checked + label {
 }
 label {
   font-size: 20px;
+}
+.iconButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
 }
 </style>

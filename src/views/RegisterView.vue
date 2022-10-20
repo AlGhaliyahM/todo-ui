@@ -28,7 +28,7 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="blackContainer" style="border-radius: 15px">
+  <div class="container blackContainer" style="border-radius: 15px">
     <form @submit.prevent="submit">
       <h1 class="textBox">Register new Account</h1>
       <h6
