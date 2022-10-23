@@ -21,7 +21,14 @@ const submit = async () => {
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // to get the cookie
     body: JSON.stringify(data),
-  }).catch((err) => console.log(err.message));
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((response) => {
+      alert(response.message);
+    })
+    .catch((err) => console.log(err.message));
   await authStore.isAuth();
   if (authStore.getAuth) await router.push('/');
 };

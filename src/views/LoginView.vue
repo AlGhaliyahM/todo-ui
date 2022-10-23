@@ -1,13 +1,18 @@
 <script lang="ts" setup>
 import { APISettings } from '../api/config';
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
+import { useToast } from 'bootstrap-vue-3';
+
+let toast = useToast();
 
 const authStore = useAuthStore();
 const data = reactive({
   email: '',
   password: '',
+  toastMsg: '',
+  toastVarient: '',
 });
 
 const router = useRouter();
@@ -20,16 +25,30 @@ const submit = async () => {
     credentials: 'include', // to get the cookie
     body: JSON.stringify(data),
   })
+    .then((res) => {
+      console.log(res);
+
+      if (res.status == 401) {
+        // alert('Email or password is not correct please try again');
+        // data.toastVarient = 'danger';
+      }
+      if (res.status == 404) {
+        // alert('Email or password is not correct please try again');
+        // data.toastVarient = 'danger';
+      }
+      if (res.status == 201) {
+        // alert('logged in successfully ');
+        // data.toastVarient = 'success';
+      }
+
+      return res.json();
+    })
     .then((response) => {
-      if (response.status == 401) {
-        alert('Email or password is not correct please try again');
-      }
-      if (response.status == 404) {
-        alert('Email or password is not correct please try again');
-      }
-      if (response.status == 201) {
-        alert('logged in successfully ');
-      }
+      data.toastMsg = response.message;
+      console.log(data.toastMsg);
+    })
+    .then(() => {
+      toast.show({ title: data.toastMsg }, { pos: 'top-center' });
     })
     .catch((err) => err.message);
 
@@ -39,6 +58,13 @@ const submit = async () => {
 </script>
 
 <template>
+  <!-- <Alerts /> -->
+  <b-container
+    :toast="{ root: true }"
+    fluid="sm"
+    position="position-fixed"
+    style="top: 50px; left: -200px; color: black"
+  ></b-container>
   <div
     class="container blackContainer col col-md-6"
     style="border-radius: 15px"

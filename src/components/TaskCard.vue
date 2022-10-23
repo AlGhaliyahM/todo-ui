@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TaskItem from './TaskItem.vue';
+// import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
 
 //initiate the store
@@ -8,7 +8,7 @@ const todoStore = useTodoStore();
 <template>
   <div
     class="card todoContainer"
-    style="border-radius: 15px; background-color: #395B64"
+    style="border-radius: 15px; background-color: #395b64"
   >
     <h6 class="mb-6 boxTitle">My Todos</h6>
 

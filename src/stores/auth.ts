@@ -32,7 +32,7 @@ export const useAuthStore = defineStore({
         method: 'POST',
         headers: APISettings.headers,
         credentials: 'include',
-      }).then((response) => response.json());
+      }).then((response) => response.json()).then(res=>{alert(res.message)});
       this.authenticated = false;
     },
   },

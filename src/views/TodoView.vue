@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TaskCard from '../components/TaskCard.vue';
+// import TaskCard from '../components/TaskCard.vue';
 import { useTodoStore } from '../stores/todo';
 import { ref } from 'vue';
 import { useAuthStore } from '../stores/auth';
@@ -46,7 +46,7 @@ const task = ref('');
                   type="text"
                   v-model="task"
                   class="form-control form-control-lg"
-                  style="background-color: #E7F6F2; color: #2d2e36"
+                  style="background-color: #e7f6f2; color: #2d2e36"
                   placeholder="New Todo..."
                 />
                 <button
