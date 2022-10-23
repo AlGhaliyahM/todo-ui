@@ -5,7 +5,6 @@ import 'bootstrap/dist/js/bootstrap.js';
 import "bootstrap";
 import App from './App.vue';
 import router from './router';
-// import VueBasicAlert from 'vue-basic-alert';
 import './assets/main.css';
 import TaskItem from './components/TaskItem.vue'
 import TaskCard from './components/TaskCard.vue'
@@ -22,9 +21,5 @@ app.use(createPinia());
 app.use(router);
 app.use(BootstrapVue3);
 app.use(BToastPlugin);
-
-// app.use(BootstrapVue);
-// app.use(BootstrapVueIcons);
-// app.use(VueBasicAlert);
 
 app.mount('#app');

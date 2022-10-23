@@ -58,26 +58,31 @@ const submit = async () => {
 </script>
 
 <template>
-  <!-- <Alerts /> -->
   <b-container
     :toast="{ root: true }"
     fluid="sm"
     position="position-fixed"
-    style="top: 50px; left: -200px; color: black"
-  ></b-container>
+    style="top: 50px; left: -200px"
+  >
+  </b-container>
   <div
     class="container blackContainer col col-md-6"
     style="border-radius: 15px"
   >
     <form @submit.prevent="submit">
       <h1 class="textBox">Log in to Your Account</h1>
+
       <h6
-        class="textBox"
-        style="color: #ffffff; font-weight: 300; font-size: 16px"
+        style="
+          color: #ffffff;
+          font-weight: 300;
+          font-size: 16px;
+          text-align: center;
+        "
       >
         Don't have an account?
         <RouterLink
-          style="color: #00b9be; font-weight: 500; text-decoration: none"
+          style="color: #ffffff; font-weight: 500; text-decoration: none"
           to="/register"
         >
           register</RouterLink

@@ -3,12 +3,15 @@ import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { APISettings } from '../api/config';
 import { useAuthStore } from '../stores/auth';
+import { useToast } from 'bootstrap-vue-3';
 
+let toast = useToast();
 const authStore = useAuthStore();
 const data = reactive({
   name: '',
   email: '',
   password: '',
+  toastMsg: '',
 });
 
 const router = useRouter();
@@ -26,25 +29,40 @@ const submit = async () => {
       return res.json();
     })
     .then((response) => {
-      alert(response.message);
+      data.toastMsg = response.message;
+      console.log(data.toastMsg);
     })
-    .catch((err) => console.log(err.message));
+    .then(() => {
+      toast.show({ title: data.toastMsg }, { pos: 'top-center' });
+    })
+    .catch((err) => err.message);
   await authStore.isAuth();
   if (authStore.getAuth) await router.push('/');
 };
 </script>
 
 <template>
+  <b-container
+    :toast="{ root: true }"
+    fluid="sm"
+    position="position-fixed"
+    style="top: 50px; left: -200px"
+  >
+  </b-container>
   <div class="container blackContainer" style="border-radius: 15px">
     <form @submit.prevent="submit">
       <h1 class="textBox">Register new Account</h1>
       <h6
-        class="textBox"
-        style="color: #ffffff; font-weight: 300; font-size: 16px"
+        style="
+          color: #ffffff;
+          font-weight: 300;
+          font-size: 16px;
+          text-align: center;
+        "
       >
         Already have an account?
         <RouterLink
-          style="color: #00b9be; font-weight: 500; text-decoration: none"
+          style="color: #ffffff; font-weight: 500; text-decoration: none"
           to="/Login"
         >
           Login</RouterLink

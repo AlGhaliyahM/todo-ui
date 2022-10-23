@@ -41,7 +41,6 @@ authStore.isAuth();
           </li>
         </ul>
 
-        <!-- show the logout route if we are in the todo page -->
         <ul
           class="navbar-nav"
           v-if="authStore.getAuth == true && path.value.name == 'Todo'"
@@ -62,7 +61,6 @@ authStore.isAuth();
       </div>
     </div>
   </nav>
-  <!-- <hr /> -->
 </template>
 
 <style>
