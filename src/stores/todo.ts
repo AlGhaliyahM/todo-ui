@@ -115,7 +115,7 @@ export const useTodoStore = defineStore({
       await fetch(APISettings.baseURL + 'todo', {
         method: 'POST',
         headers: APISettings.headers,
-        credentials: 'include', //to get the cookie
+        credentials: 'include', 
         body: JSON.stringify(task).toString(),
       })
         .then(() => {
