@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { useTodoStore } from '../stores/todo';
 import IconDelete from './icons/IconDelete.vue';
+
+import { useToast } from 'bootstrap-vue-3';
+
+const toast = useToast();
+
 //initiate the store
 const todoStore = useTodoStore();
 
@@ -11,12 +16,24 @@ const props = defineProps({
 });
 // console.log(props.Name);
 
-function changeState() {
+async function changeState() {
   todoStore.updateTask(props.id || 0);
+  //i believe the task background should change to indicate the change
+  // toast?.show(
+  //   { title: props.name + ' Updated' },
+  //   { pos: 'top-center', variant: 'success', delay: 1000 },
+  // );
 }
 </script>
 
 <template>
+  <b-container
+    :toast="{ root: true }"
+    fluid="sm"
+    position="position-static"
+    class=""
+  >
+  </b-container>
   <div v-if="props.is_done == false">
     <li
       style="background-color: #a5c9ca"
@@ -56,7 +73,6 @@ function changeState() {
           checked
         />
         <label class="form-check-label">{{ props.name }}</label>
-        <!-- {{ props.name }} -->
       </div>
       <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
         <IconDelete />

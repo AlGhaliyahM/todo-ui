@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { APISettings } from '../api/config';
-import { computed, reactive } from 'vue';
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 import { useToast } from 'bootstrap-vue-3';
 
-let toast = useToast();
+const toast = useToast();
 
 const authStore = useAuthStore();
 const data = reactive({
   email: '',
   password: '',
-  toastMsg: '',
+  toastMsg: [] as string[],
   toastVarient: '',
 });
 
@@ -26,29 +26,30 @@ const submit = async () => {
     body: JSON.stringify(data),
   })
     .then((res) => {
-      console.log(res);
-
-      if (res.status == 401) {
-        // alert('Email or password is not correct please try again');
-        // data.toastVarient = 'danger';
-      }
-      if (res.status == 404) {
-        // alert('Email or password is not correct please try again');
-        // data.toastVarient = 'danger';
+      if (res.status == 401 || res.status == 404) {
+        data.toastMsg[0] = 'Error';
+        data.toastVarient = 'danger';
       }
       if (res.status == 201) {
-        // alert('logged in successfully ');
-        // data.toastVarient = 'success';
+        data.toastMsg[0] = 'success';
+        data.toastVarient = 'success';
       }
 
       return res.json();
     })
     .then((response) => {
-      data.toastMsg = response.message;
-      console.log(data.toastMsg);
+      data.toastMsg[1] = response.message;
     })
     .then(() => {
-      toast.show({ title: data.toastMsg }, { pos: 'top-center' });
+      toast?.show(
+        { title: data.toastMsg[0], body: data.toastMsg[1] },
+        {
+          pos: 'top-center',
+          variant: data.toastVarient,
+          append: false,
+          delay: 1200,
+        },
+      );
     })
     .catch((err) => err.message);
 

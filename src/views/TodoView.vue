@@ -4,6 +4,8 @@ import { useTodoStore } from '../stores/todo';
 import { ref } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import { useRouter } from 'vue-router';
+import { useToast } from 'bootstrap-vue-3';
+
 const router = useRouter();
 
 //routes the user to the login page if no cookie is set
@@ -13,19 +15,35 @@ const authStore = useAuthStore();
 if (!authStore.getAuth) {
   router.push('/login');
 }
-
+const toast = useToast();
 //initiate the store
 const todoStore = useTodoStore();
 //store action
 todoStore.getTask();
 // todoStore.countTasks();
-function addTask(task: string) {
-  todoStore.postTask(task);
+async function addTask(task: string) {
+  if ((await todoStore.postTask(task)) > 299)
+    toast?.show(
+      { title: 'Todo must contain a name' },
+      { pos: 'top-center', variant: 'danger', delay: 1000 },
+    );
+  else
+    toast?.show(
+      { title: task + ' Added to the list' },
+      { pos: 'top-center', variant: 'success', delay: 1000 },
+    );
   this.task = '';
 }
 const task = ref('');
 </script>
 <template>
+  <b-container
+    :toast="{ root: true }"
+    fluid="sm"
+    position="position-static"
+    class=""
+  >
+  </b-container>
   <div class="container py-5 h-100 px-4">
     <div class="row d-flex justify-content-center align-items-start h-100 g-4">
       <div class="col col-md-4" id="add todo card">

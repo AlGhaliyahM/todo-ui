@@ -76,6 +76,7 @@ export const useTodoStore = defineStore({
       const index = this.todos.findIndex((todo) => {
         return todo.id === ID;
       });
+      let updated = false;
       await fetch(APISettings.baseURL + 'todo/' + ID, {
         method: 'PUT',
         credentials: 'include',
@@ -83,6 +84,7 @@ export const useTodoStore = defineStore({
       })
         .then((res) => res.json())
         .then((data) => {
+          updated = true;
           this.todos[index] = data;
         })
         .catch((err) => console.log(err.message));
@@ -91,6 +93,7 @@ export const useTodoStore = defineStore({
         (a, b) => Number(a.is_done) - Number(b.is_done),
       );
       this.todos = falseFirst;
+      return updated;
     },
     async countTasks() {
       await fetch(APISettings.baseURL + 'todo/countTask', {
@@ -111,17 +114,19 @@ export const useTodoStore = defineStore({
       const task: task = {
         task: newTask,
       };
-
+      let status;
       await fetch(APISettings.baseURL + 'todo', {
         method: 'POST',
         headers: APISettings.headers,
-        credentials: 'include', 
+        credentials: 'include',
         body: JSON.stringify(task).toString(),
       })
-        .then(() => {
+        .then((res) => {
+          status = res.status;
           this.getTask();
         })
         .catch((err) => console.log(err.message));
+      return status;
     },
   },
 });

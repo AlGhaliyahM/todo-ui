@@ -5,13 +5,14 @@ import { APISettings } from '../api/config';
 import { useAuthStore } from '../stores/auth';
 import { useToast } from 'bootstrap-vue-3';
 
-let toast = useToast();
+const toast = useToast();
 const authStore = useAuthStore();
 const data = reactive({
   name: '',
   email: '',
   password: '',
   toastMsg: '',
+  toastVarient: 'danger',
 });
 
 const router = useRouter();
@@ -30,10 +31,17 @@ const submit = async () => {
     })
     .then((response) => {
       data.toastMsg = response.message;
-      console.log(data.toastMsg);
     })
     .then(() => {
-      toast.show({ title: data.toastMsg }, { pos: 'top-center' });
+      toast?.show(
+        { title: 'Error', body: data.toastMsg },
+        {
+          pos: 'top-center',
+          variant: data.toastVarient,
+          append: false,
+          delay: 1200,
+        },
+      );
     })
     .catch((err) => err.message);
   await authStore.isAuth();
@@ -42,12 +50,7 @@ const submit = async () => {
 </script>
 
 <template>
-  <b-container
-    :toast="{ root: true }"
-    fluid="sm"
-    position="position-fixed"
-    style="top: 50px; left: -200px"
-  >
+  <b-container :toast="{ root: true }" fluid="sm" position="position-fixed">
   </b-container>
   <div class="container blackContainer" style="border-radius: 15px">
     <form @submit.prevent="submit">
