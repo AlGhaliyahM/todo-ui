@@ -39,7 +39,7 @@ const submit = async () => {
           pos: 'top-center',
           variant: data.toastVarient,
           append: false,
-          delay: 1200,
+          // delay: 1200,
         },
       );
     })

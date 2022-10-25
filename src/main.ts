@@ -11,7 +11,7 @@ import TaskCard from './components/TaskCard.vue';
 import BootstrapVue3 from 'bootstrap-vue-3';
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
 import { BToastPlugin } from 'bootstrap-vue-3';
-
+import { ModalPlugin } from 'bootstrap-vue'
 const app = createApp(App);
 
 app.component('TaskItem', TaskItem);
@@ -21,5 +21,6 @@ app.use(createPinia());
 app.use(router);
 app.use(BootstrapVue3);
 app.use(BToastPlugin);
+// app.use(ModalPlugin);
 
 app.mount('#app');
