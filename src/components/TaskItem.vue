@@ -20,48 +20,40 @@ const props = defineProps({
 async function changeState() {
   todoStore.updateTask(props.id || 0);
   //i believe the task background should change to indicate the change
-  toast?.show(
-    { title: props.name + ' Updated' },
-    {
-      pos: 'top-center',
-      variant: 'success',
-      //  delay: 1000
-    },
-  );
+  //with no notification
+  // toast?.show(
+  //   { title: props.name + ' Updated' },
+  //   {
+  //     pos: 'top-center',
+  //     variant: 'light',
+  //     delay: 1000,
+  //   },
+  // );
 }
 </script>
 
 <template>
-  <b-container
-    :toast="{ root: true }"
-    fluid="sm"
-    position="position-static"
-    class=""
-  >
+  <b-container :toast="{ root: true }" fluid="sm" position="position-static">
   </b-container>
   <div v-if="props.is_done == false">
     <li
-      style="background-color: #a5c9ca"
+      style="background-color: #e5f0f0"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
-        <input
+        <b-form-checkbox
           v-on:change="changeState()"
           class="form-check-input me-3"
           type="checkbox"
           value=""
           aria-label="..."
-        />
-        <label class="form-check-label" style="color: black">{{
-          props.name
-        }}</label>
+          style="margin-top: 0.6rem"
+        >
+          {{ props.name }}</b-form-checkbox
+        >
         <!-- {{ props.name }} -->
       </div>
-      <button
-        v-b-modal.modal-center
-        class="iconButton"
-        @click="todoStore.deleteTask(props.id || -1)"
-      >
+      <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
         <IconDelete />
       </button>
     </li>
@@ -73,21 +65,18 @@ async function changeState() {
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
     >
       <div class="d-flex align-items-center">
-        <input
+        <b-form-checkbox
           v-on:change="changeState()"
           class="form-check-input me-3"
           type="checkbox"
           value=""
           aria-label="..."
           checked
-        />
-        <label class="form-check-label">{{ props.name }}</label>
+          style="margin-top: 0.6rem"
+          >{{ props.name }}</b-form-checkbox
+        >
       </div>
-      <button
-        v-b-modal.modal-center
-        class="iconButton"
-        @click="todoStore.deleteTask(props.id || -1)"
-      >
+      <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
         <IconDelete />
       </button>
     </li>

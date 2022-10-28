@@ -2,6 +2,7 @@
 import { useAuthStore } from '../stores/auth';
 import router from '../router/index';
 import { computed } from 'vue';
+import { useToast } from 'bootstrap-vue-3';
 
 const authStore = useAuthStore();
 const path = computed(() => {
@@ -9,9 +10,29 @@ const path = computed(() => {
   // return window.location.href.split('/').pop();
 });
 authStore.isAuth();
+
+const toast = useToast();
+const logout = () => {
+  authStore.logout();
+  console.log('noti should go here');
+
+  toast?.show(
+    {
+      title: 'Logout sucessful',
+    },
+    { pos: 'top-center', variant: 'success' },
+  );
+};
 </script>
 
 <template>
+  <b-container
+    :toast="{ root: true }"
+    fluid="sm"
+    position="position-fixed"
+    style="top: 50px; left: -200px"
+  >
+  </b-container>
   <nav class="navbar navbar-expand navbar-dark">
     <div class="container-md">
       <a class="navbar-brand"
@@ -53,7 +74,7 @@ authStore.isAuth();
               style="color: whitesmoke; font-weight: 600"
               class="nav-link"
               to="/Login"
-              v-on:click="authStore.logout()"
+              v-on:click="logout()"
               >Logout</RouterLink
             >
           </li>

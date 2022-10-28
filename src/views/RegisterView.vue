@@ -61,6 +61,7 @@ const submit = async () => {
           font-weight: 300;
           font-size: 16px;
           text-align: center;
+          padding-bottom: 2rem;
         "
       >
         Already have an account?
