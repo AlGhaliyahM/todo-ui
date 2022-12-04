@@ -11,7 +11,6 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       components: {
         default: () => import('../views/RegisterView.vue'),
-        NavBar: () => import('@/components/NavBar.vue'),
       },
     },
     {
@@ -19,7 +18,6 @@ const router = createRouter({
       name: 'login',
       components: {
         default: () => import('../views/LoginView.vue'),
-        NavBar: () => import('@/components/NavBar.vue'),
       },
     },
     {
@@ -27,7 +25,7 @@ const router = createRouter({
       name: 'Todo',
       components: {
         default: () => import('../views/TodoView.vue'),
-        NavBar: () => import('@/components/NavBar.vue'),
+        NavBar: () => import('@/components/Navbar.vue'),
       },
     },
   ],

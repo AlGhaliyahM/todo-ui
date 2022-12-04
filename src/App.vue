@@ -4,7 +4,6 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <!-- <NavBar /> -->
   <div>
     <RouterView name="NavBar" />
     <RouterView />
