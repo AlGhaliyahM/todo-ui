@@ -1,18 +1,14 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+// import { LockClosedIcon } from '@heroicons/vue/20/solid';
 import { APISettings } from '../api/config';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
-import { useToast } from 'bootstrap-vue-3';
-
-const toast = useToast();
 
 const authStore = useAuthStore();
 const data = reactive({
   email: '',
   password: '',
-  toastMsg: [] as string[],
-  toastVarient: '',
 });
 
 const router = useRouter();
@@ -26,30 +22,7 @@ const submit = async () => {
     body: JSON.stringify(data),
   })
     .then((res) => {
-      if (res.status == 401 || res.status == 404) {
-        data.toastMsg[0] = 'Error';
-        data.toastVarient = 'danger';
-      }
-      if (res.status == 201) {
-        data.toastMsg[0] = 'success';
-        data.toastVarient = 'success';
-      }
-
       return res.json();
-    })
-    .then((response) => {
-      data.toastMsg[1] = response.message;
-    })
-    .then(() => {
-      toast?.show(
-        { title: data.toastMsg[0], body: data.toastMsg[1] },
-        {
-          pos: 'top-center',
-          variant: data.toastVarient,
-          append: false,
-          // delay: 1200,
-        },
-      );
     })
     .catch((err) => err.message);
 
@@ -57,89 +30,65 @@ const submit = async () => {
   if (authStore.getAuth) await router.push('/');
 };
 </script>
-
 <template>
-  <b-container
-    :toast="{ root: true }"
-    fluid="sm"
-    position="position-fixed"
-    style="top: 50px; left: -200px"
-  >
-  </b-container>
   <div
-    class="container blackContainer col col-md-6"
-    style="border-radius: 15px"
+    class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
   >
-    <form @submit.prevent="submit">
-      <h1 class="textBox">Log in to Your Account</h1>
-
-      <h6
-        style="
-          color: #ffffff;
-          font-weight: 300;
-          font-size: 16px;
-          text-align: center;
-          padding-bottom: 2rem;
-        "
-      >
-        Don't have an account?
-        <RouterLink
-          style="color: #ffffff; font-weight: 500; text-decoration: none"
-          to="/register"
+    <div class="w-full max-w-md space-y-8">
+      <div>
+        <h2
+          class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
         >
-          register</RouterLink
-        >
-      </h6>
-
-      <div class="inputContainer">
-        <input
-          v-model="data.email"
-          type="email"
-          class="inputField"
-          placeholder="Email"
-          required
-        />
-
-        <input
-          v-model="data.password"
-          type="password"
-          class="inputField"
-          placeholder="Password"
-          required
-        />
-
-        <button class="submitBtn" type="submit">Login to Your Account</button>
+          Log in to your account
+        </h2>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Or
+          {{ ' ' }}
+          <RouterLink
+            to="/register"
+            class="font-medium text-cyan-600 hover:text-cyan-500"
+          >
+            register a new account</RouterLink
+          >
+        </p>
       </div>
-    </form>
+      <form class="mt-8 space-y-6" @submit.prevent="submit">
+        <input type="hidden" name="remember" value="true" />
+        <div class="-space-y-px rounded-md shadow-sm">
+          <div>
+            <label for="email-address" class="sr-only">Email address</label>
+            <input
+              v-model="data.email"
+              id="email-address"
+              name="email"
+              type="email"
+              autocomplete="email"
+              class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+              placeholder="Email address"
+            />
+          </div>
+          <div>
+            <label for="password" class="sr-only">Password</label>
+            <input
+              v-model="data.password"
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="group relative flex w-full justify-center rounded-md border border-transparent bg-cyan-600 py-2 px-4 text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
-
-<style>
-body {
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-/* 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  color: grey;
-}
-
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin input[type='email'] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type='password'] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-} */
-</style>

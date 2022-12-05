@@ -1,12 +1,5 @@
 <script setup lang="ts">
 import { useTodoStore } from '../stores/todo';
-import IconDelete from './icons/IconDelete.vue';
-
-import { useToast } from 'bootstrap-vue-3';
-import type { hide } from '@popperjs/core';
-
-const toast = useToast();
-
 //initiate the store
 const todoStore = useTodoStore();
 
@@ -19,6 +12,7 @@ const props = defineProps({
 
 async function changeState() {
   todoStore.updateTask(props.id || 0);
+
   //i believe the task background should change to indicate the change
   //with no notification
   // toast?.show(
@@ -30,12 +24,118 @@ async function changeState() {
   //   },
   // );
 }
+// function checked() {
+//   const checked_green = document.getElementById('check' + id);
+//   checked_green.classList.toggle('green');
+//   const strike_unstrike = document.getElementById('strike' + id);
+//   strike_unstrike.classList.toggle('strike_none');
+// }
 </script>
 
 <template>
-  <b-container :toast="{ root: true }" fluid="sm" position="position-static">
-  </b-container>
   <div v-if="props.is_done == false">
+    <li class="mt-4">
+      <div class="flex gap-1">
+        <div
+          class="w-5/6 h-12 bg-[#e0ebff] rounded-[7px] flex justify-start items-center px-3"
+        >
+          <span
+            id="check"
+            class="w-7 h-7 bg-white rounded-full border border-white transition-all cursor-pointer hover:border-[#36d344] flex justify-center items-center"
+            v-on:click="changeState()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 stroke-white"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12.75l6 6 9-13.5"
+              />
+            </svg>
+          </span>
+          <p class="ml-4 text-[#5b7a9d] font-semibold">
+            {{ props.name }}
+          </p>
+        </div>
+        <span
+          class="w-1/6 h-12 bg-[#e0ebff] rounded-[7px] flex justify-center text-sm text-[#5b7a9d] font-semibold items-center"
+          v-on:click="todoStore.deleteTask(props.id || -1)"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+      </div>
+    </li>
+  </div>
+
+  <div v-if="props.is_done == true">
+    <li class="mt-4">
+      <div class="flex gap-1">
+        <div
+          class="w-5/6 h-12 bg-[#e0ebff] rounded-[7px] flex justify-start items-center px-3"
+        >
+          <span
+            id="check"
+            class="green w-7 h-7 bg-white rounded-full border border-white transition-all cursor-pointer hover:border-[#36d344] flex justify-center items-center"
+            v-on:click="changeState()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 stroke-white"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12.75l6 6 9-13.5"
+              />
+            </svg>
+          </span>
+          <p class="ml-4 text-[#5b7a9d] font-semibold line-through">
+            {{ props.name }}
+          </p>
+        </div>
+        <span
+          class="w-1/6 h-12 bg-[#e0ebff] rounded-[7px] flex justify-center text-sm text-[#5b7a9d] font-semibold items-center"
+          v-on:click="todoStore.deleteTask(props.id || -1)"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+      </div>
+    </li>
+  </div>
+
+  <!-- <div v-if="props.is_done == false">
     <li
       style="background-color: #e5f0f0"
       class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded mb-2"
@@ -51,7 +151,7 @@ async function changeState() {
         >
           {{ props.name }}</b-form-checkbox
         >
-        <!-- {{ props.name }} -->
+
       </div>
       <button class="iconButton" @click="todoStore.deleteTask(props.id || -1)">
         <IconDelete />
@@ -80,7 +180,7 @@ async function changeState() {
         <IconDelete />
       </button>
     </li>
-  </div>
+  </div> -->
 
   <!-- <div>
     <b-modal id="modal-center" centered hide-footer hide-header>
@@ -135,35 +235,10 @@ async function changeState() {
 </template>
 
 <style>
-.check {
-  margin-right: 1rem;
+.strike_none {
+  text-decoration: none;
 }
-
-.todoItem {
-  margin: 7px;
-  background-color: #0091b9;
-  font-size: larger;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-}
-.done label {
-  text-decoration: line-through;
-}
-
-input[type='checkbox']:checked + label {
-  color: black;
-  text-decoration: line-through;
-}
-label {
-  font-size: 20px;
-}
-.iconButton {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: none;
+.green {
+  background-color: green !important;
 }
 </style>

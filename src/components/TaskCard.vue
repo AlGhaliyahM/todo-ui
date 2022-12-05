@@ -1,43 +1,28 @@
 <script lang="ts" setup>
 // import TaskItem from './TaskItem.vue';
 import { useTodoStore } from '../stores/todo';
+import TaskItemVue from './TaskItem.vue';
 
 //initiate the store
 const todoStore = useTodoStore();
 </script>
 <template>
   <div
-    class="card todoContainer"
-    style="border-radius: 15px; background-color: #395b64"
+    class="container max-h-[28rem] flex flex-col md:w-1/2 rounded-lg p-4 gap-4 bg-white"
   >
-    <h6 class="mb-6 boxTitle">My Todos</h6>
+    <p class="text-xl font-semibold mt-2 text-cyan-700">To-Do List</p>
 
-    <div class="card-body p-3 overflow-scroll">
-      <ul class="list-group mb-0" v-if="todoStore.getTodoLength === 0">
-        No Todos
-      </ul>
-      <ul
-        class="list-group mb-0"
-        v-if="todoStore.getTodoLength !== 0"
-        style="border-radius: 15px"
-      >
-        <TaskItem
-          v-for="todo in todoStore.getTodos"
-          :key="todo.id"
-          :id="todo.id"
-          :name="todo.task"
-          :is_done="todo.is_done"
-        />
-      </ul>
-    </div>
+    <ul class="my-1 overflow-y-auto" v-if="todoStore.getTodoLength != 0">
+      <TaskItemVue
+        v-for="todo in todoStore.getTodos"
+        :key="todo.id"
+        :id="todo.id"
+        :name="todo.task"
+        :is_done="todo.is_done"
+      />
+    </ul>
+    <ul class="my-4" v-if="todoStore.getTodoLength == 0">
+      <p class="text-base font-semibold ml-4 mt-2 text-cyan-700">No Todos</p>
+    </ul>
   </div>
 </template>
-
-<style scoped>
-.todoList {
-  margin: 20px 0;
-}
-.check {
-  margin-right: 1rem;
-}
-</style>
